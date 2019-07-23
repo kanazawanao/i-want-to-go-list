@@ -15,6 +15,8 @@ import { environment } from './../environments/environment';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,11 @@ import { UserInfoComponent } from './pages/user-info/user-info.component';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatButtonModule,
+    MatToolbarModule
   ],
-  providers: [
-    AuthService,
-    AuthGuard
-  ],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

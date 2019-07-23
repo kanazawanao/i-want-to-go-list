@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 
@@ -14,15 +14,15 @@ export class UserLoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private auth: AuthService
-  ) {
+  ) {}
+
+  ngOnInit() {
+    // ログイン済みならユーザーinfoへ
     this.auth.user.subscribe(user => {
       if (user !== null) {
         this.router.navigate(['/']);
       }
     });
-  }
-
-  ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
@@ -32,17 +32,14 @@ export class UserLoginComponent implements OnInit {
   login() {
     const email = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;
-    this.auth.login(email, password)
-      .then(() => {
-        this.router.navigate(['/']);
-      });
+    this.auth.login(email, password).then(() => {
+      this.router.navigate(['/']);
+    });
   }
 
   googleLogin() {
-    this.auth.googleLogin()
-      .then(() => {
-        this.router.navigate(['/']);
-      });
+    this.auth.googleLogin().then(() => {
+      this.router.navigate(['/']);
+    });
   }
-
 }
