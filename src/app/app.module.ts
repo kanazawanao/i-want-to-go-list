@@ -19,6 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule } from '@angular/router';
+import { PlaceRegistComponent } from './pages/place-regist/place-regist.component';
+import { PlaceListComponent } from './pages/place-list/place-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     UserLoginComponent,
     UserSignupComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    PlaceRegistComponent,
+    PlaceListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

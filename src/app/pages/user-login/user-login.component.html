@@ -4,9 +4,13 @@
 <button [routerLink]="['/signup']">新規登録</button>
 
 <form [formGroup]="loginForm" (ngSubmit)="login()">
-  <label for="email">Email</label>
-  <input type="email" class="input" formControlName="email" required >
-  <label for="password">Password</label>
-  <input type="password" class="input" formControlName="password" required >
+  <div>
+    <label for="email">Email</label>
+    <input type="email" class="input" formControlName="email" required >
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" class="input" formControlName="password" required >
+  </div>
   <button type="submit" class="button">ログイン</button>
 </form>
