@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from './../models/user';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class AuthService {
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
-    private afStore: AngularFirestore
+    private afStore: AngularFirestore,
+    private userService: UserService
   ) {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -31,7 +33,7 @@ export class AuthService {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(user => {
         console.log(user);
-        return this.updateUserData(user.user);
+        return this.userService.updateUserData(user.user);
       })
       .catch(err => console.log(err));
   }
@@ -40,7 +42,7 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(user => {
         console.log(user);
-        return this.updateUserData(user.user);
+        return this.userService.updateUserData(user.user);
       })
       .catch(err => console.log(err));
   }
@@ -61,20 +63,8 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(provider)
       .then(credential => {
         console.log(credential.user);
-        return this.updateUserData(credential.user);
+        return this.userService.updateUserData(credential.user);
       })
       .catch(err => console.log(err));
-  }
-
-  private updateUserData(user: User) {
-    const docUser: AngularFirestoreDocument<User> = this.afStore.doc(`users/${user.uid}`);
-    const data: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName || '',
-      photoURL: user.photoURL || '',
-      profile: user.profile || ''
-    };
-    return docUser.set(data);
   }
 }
