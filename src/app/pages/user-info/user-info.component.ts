@@ -14,8 +14,4 @@ export class UserInfoComponent implements OnInit {
       console.log(user);
     });
   }
-
-  logout() {
-    this.auth.logout();
-  }
 }

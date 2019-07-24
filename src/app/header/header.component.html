@@ -1,11 +1,19 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>header</span>
     <span>
-      <a mat-button routerLink="" class="header-button">test</a>
+      <a mat-button routerLink="" class="header-button">一覧</a>
+    </span>
+    <span>
+      <a mat-button routerLink="" class="header-button">追加</a>
+    </span>
+    <span>
+      <a mat-button routerLink="" class="header-button">ランダム目的地</a>
     </span>
     <span>
       <a mat-button routerLink="login" class="header-button">Login</a>
+    </span>
+    <span>
+      <button (click)="logout()">ログアウト</button>
     </span>
   </mat-toolbar-row>
 </mat-toolbar>

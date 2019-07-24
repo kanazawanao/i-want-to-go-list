@@ -37,13 +37,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     AngularFireAuthModule,
     AngularFirestoreModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    RouterModule
+    RouterModule,
+    MatButtonModule,
+    MatToolbarModule
   ],
   providers: [
     AuthService,
-    AuthGuard,
-    MatButtonModule,
-    MatToolbarModule
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

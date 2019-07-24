@@ -1,7 +1,6 @@
 <div *ngIf="auth.user | async as user">
   <h1>ようこそ {{user.displayName}}</h1>
 </div>
-<button (click)="logout()">ログアウト</button>
 
 <div *ngIf="auth.user | async as user">
   <h2>ユーザー情報</h2>
