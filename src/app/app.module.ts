@@ -17,6 +17,8 @@ import { AuthGuard } from './guard/auth.guard';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -39,8 +41,10 @@ import { RouterModule } from '@angular/router';
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    MatButtonModule,
+    MatToolbarModule
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
