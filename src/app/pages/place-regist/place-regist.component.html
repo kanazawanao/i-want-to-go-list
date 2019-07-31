@@ -1,1 +1,27 @@
 <h1>行きたい場所登録</h1>
+
+<form [formGroup]="placeRegistForm" (ngSubmit)="regist()">
+  <div>
+    <label for="place">place</label>
+    <input type="text" class="input" [formControl]="place" required />
+  </div>
+  <div>
+    <label for="prefectures">prefectures</label>
+    <input type="text" class="input" [formControl]="prefectures" required />
+  </div>
+  <div>
+    <label for="addr">addr</label>
+    <input
+      type="text"
+      class="input"
+      value="place.addr"
+      formControlName="addr"
+      required
+    />
+  </div>
+  <div>
+    <label for="went">went</label>
+    <input type="checkbox" class="input" value="place.went" />
+  </div>
+  <button type="submit" class="button">登録</button>
+</form>

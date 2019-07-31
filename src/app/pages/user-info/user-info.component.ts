@@ -6,8 +6,7 @@ import { AuthService } from './../../services/auth.service';
   styleUrls: ['./user-info.component.scss']
 })
 export class UserInfoComponent implements OnInit {
-
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService) {}
 
   ngOnInit() {
     this.auth.user.subscribe(user => {

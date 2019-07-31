@@ -14,7 +14,7 @@ export class UserSignupComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private auth: AuthService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.signupForm = this.fb.group({
@@ -26,9 +26,8 @@ export class UserSignupComponent implements OnInit {
   signup() {
     const email = this.signupForm.get('email').value;
     const password = this.signupForm.get('password').value;
-    this.auth.siginUp(email, password)
-      .then((x) => {
-        this.router.navigate(['/']);
-      });
+    this.auth.siginUp(email, password).then(x => {
+      this.router.navigate(['/']);
+    });
   }
 }
