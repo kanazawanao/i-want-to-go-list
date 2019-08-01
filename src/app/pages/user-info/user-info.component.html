@@ -1,16 +1,14 @@
-<div *ngIf="auth.user | async as user">
-  <h1>ようこそ {{ user.displayName }}</h1>
-</div>
+<h1>ようこそ {{ user.displayName }}</h1>
 
-<div *ngIf="auth.user | async as user">
-  <h2>ユーザー情報</h2>
-  <p>プロフィール画像:</p>
-  <img [src]="user.photoURL" style="width: 150px" />
-  <p>UID: {{ user.uid }}</p>
-  <p>Email: {{ user.email }}</p>
-  <p>名前: {{ user.displayName }}</p>
-  <input type="text" value="user.displayName" />
-  <p>プロフィール: {{ user.profile }}</p>
-  <input type="text" value="user.profile" />
-</div>
-<button></button>
+<h2>ユーザー情報</h2>
+<p>プロフィール画像:</p>
+<p>Email:
+  <input [(ngModel)]="user.email" placeholder="email"/>
+</p>
+<p>名前:
+  <input [(ngModel)]="user.displayName" placeholder="displayName"/>
+</p>
+<p>プロフィール:
+  <input [(ngModel)]="user.profile" placeholder="profile"/>
+</p>
+<button type="submit" (click)="update()">更新</button>
