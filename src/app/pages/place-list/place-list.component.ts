@@ -10,6 +10,7 @@ import { Place } from 'src/app/models/place';
 })
 export class PlaceListComponent implements OnInit {
   items$: Observable<Place[]>;
+  selectedPlace: Place;
   constructor(private placeService: PlaceService) {}
 
   ngOnInit() {
@@ -22,5 +23,9 @@ export class PlaceListComponent implements OnInit {
 
   update(place: Place) {
     this.placeService.updatePlace(place);
+  }
+
+  onSelect(place: Place) {
+    this.selectedPlace = place;
   }
 }

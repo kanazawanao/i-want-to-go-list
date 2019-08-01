@@ -1,0 +1,21 @@
+<div *ngIf="place">
+  <h2>Details</h2>
+  <div>
+    <label>
+      名称：
+      <input [(ngModel)]="place.place" placeholder="place" />
+    </label>
+  </div>
+  <div>
+    <label>
+      都道府県:
+      <input [(ngModel)]="place.prefectures" placeholder="prefectures" />
+    </label>
+  </div>
+  <div>
+    <label>
+      住所:
+      <input [(ngModel)]="place.addr" placeholder="addr" />
+    </label>
+  </div>
+</div>

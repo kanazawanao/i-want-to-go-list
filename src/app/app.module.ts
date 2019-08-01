@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
 import { PlaceRegistComponent } from './pages/place-regist/place-regist.component';
 import { PlaceListComponent } from './pages/place-list/place-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PlaceDetailComponent } from './pages/place-detail/place-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserSignupComponent,
     UserInfoComponent,
     PlaceRegistComponent,
-    PlaceListComponent
+    PlaceListComponent,
+    PlaceDetailComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
