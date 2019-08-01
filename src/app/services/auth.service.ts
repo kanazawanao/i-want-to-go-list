@@ -13,8 +13,8 @@ import { Place } from '../models/place';
   providedIn: 'root'
 })
 export class AuthService {
-  user: Observable<User | null>;
-  places: Observable<Place[] | null>;
+  user: Observable<User | null | undefined>;
+  places?: Observable<Place[] | null>;
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
@@ -37,7 +37,7 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then(user => {
         console.log(user);
-        return this.userService.updateUserData(user.user);
+        return this.userService.addUser(this.createUser(user.user));
       })
       .catch(err => console.log(err));
   }
@@ -47,7 +47,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then(user => {
         console.log(user);
-        return this.userService.updateUserData(user.user);
+        return this.userService.updateUser(this.createUser(user.user));
       })
       .catch(err => console.log(err));
   }
@@ -63,13 +63,24 @@ export class AuthService {
     });
   }
 
-  private oAuthLogin(provider) {
+  private oAuthLogin(provider: firebase.auth.AuthProvider) {
     return this.afAuth.auth
       .signInWithPopup(provider)
       .then(credential => {
         console.log(credential.user);
-        return this.userService.updateUserData(credential.user);
+        return this.userService.updateUser(this.createUser(credential.user));
       })
       .catch(err => console.log(err));
+  }
+
+  private createUser(crediential: firebase.auth.UserCredential | any) {
+    const user = new User();
+    if (crediential) {
+      user.uid = crediential.uid ? crediential.uid : '';
+      user.email = crediential.email ? crediential.email : '';
+      user.displayName = crediential.displayName ? crediential.displayName : '';
+      user.photoURL = crediential.photoURL ? crediential.photoURL : '';
+    }
+    return user;
   }
 }

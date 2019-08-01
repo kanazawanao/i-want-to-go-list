@@ -8,24 +8,17 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./user-info.component.scss']
 })
 export class UserInfoComponent implements OnInit {
-  user:User = {
-    uid: '',
-    displayName: '',
-    email: '',
-    photoURL: '',
-  }
-  constructor(
-    private auth: AuthService,
-    private userService: UserService) {}
+  user: User = new User();
+  constructor(private auth: AuthService, private userService: UserService) {}
 
   ngOnInit() {
     this.auth.user.subscribe(u => {
-      this.user = u;
+      this.user = u ? u : new User();
     });
   }
 
   update() {
     console.log(this.user);
-    this.userService.updateUserData(this.user);
+    this.userService.updateUser(this.user);
   }
 }

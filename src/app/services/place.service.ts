@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
-  AngularFirestoreDocument,
   AngularFirestoreCollection
 } from '@angular/fire/firestore';
 import { Place } from '../models/place';

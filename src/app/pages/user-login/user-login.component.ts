@@ -9,12 +9,9 @@ import { AuthService } from './../../services/auth.service';
   styleUrls: ['./user-login.component.scss']
 })
 export class UserLoginComponent implements OnInit {
-  loginForm: FormGroup;
-  constructor(
-    private router: Router,
-    private fb: FormBuilder,
-    private auth: AuthService
-  ) {}
+  email = '';
+  password = '';
+  constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit() {
     // ログイン済みならユーザーinfoへ
@@ -23,16 +20,10 @@ export class UserLoginComponent implements OnInit {
         this.router.navigate(['/']);
       }
     });
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
-    });
   }
 
   login() {
-    const email = this.loginForm.get('email').value;
-    const password = this.loginForm.get('password').value;
-    this.auth.login(email, password).then(() => {
+    this.auth.login(this.email, this.password).then(() => {
       this.router.navigate(['/']);
     });
   }

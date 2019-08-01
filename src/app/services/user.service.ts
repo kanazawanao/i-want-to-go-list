@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection
+} from '@angular/fire/firestore';
 import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private collection: AngularFirestoreCollection<User>;
+  constructor(private afStore: AngularFirestore) {
+    this.collection = this.afStore.collection<User>('users');
+  }
 
-  constructor(private afStore: AngularFirestore) { }
-  
-  updateUserData(user: User) {
-    const docUser: AngularFirestoreDocument<User> = this.afStore.doc(`users/${user.uid}`);
-    const data: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName || '',
-      photoURL: user.photoURL || '',
-      profile: user.profile || ''
-    };
-    return docUser.set(data);
+  addUser(user: User) {
+    console.log(user);
+    this.collection.doc(user.uid).set(user);
+  }
+
+  updateUser(user: User) {
+    console.log(user);
+    this.collection.doc(user.uid).update(user);
   }
 }

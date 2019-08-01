@@ -1,8 +1,8 @@
-export interface Place {
-  id: string,
-  userId: string;
-  place: string;
-  prefectures: string;
-  addr: string;
-  went: boolean;
+export class Place {
+  id = '';
+  userId = '';
+  place = '';
+  prefectures = '';
+  addr = '';
+  went = false;
 }
