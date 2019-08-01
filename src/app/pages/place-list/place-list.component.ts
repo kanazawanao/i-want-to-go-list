@@ -10,9 +10,17 @@ import { Place } from 'src/app/models/place';
 })
 export class PlaceListComponent implements OnInit {
   items$: Observable<Place[]>;
-  constructor(private placeService: PlaceService) { }
+  constructor(private placeService: PlaceService) {}
 
   ngOnInit() {
     this.items$ = this.placeService.getAllPlace();
+  }
+
+  delete(place: Place) {
+    this.placeService.deletePlace(place);
+  }
+
+  update(place: Place) {
+    this.placeService.updatePlace(place);
   }
 }
