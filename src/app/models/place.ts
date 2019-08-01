@@ -1,5 +1,6 @@
 export interface Place {
-  uid: string;
+  id: string,
+  userId: string;
   place: string;
   prefectures: string;
   addr: string;

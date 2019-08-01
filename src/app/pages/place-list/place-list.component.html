@@ -1,1 +1,7 @@
 <h1>行きたい場所リスト</h1>
+
+<ul>
+  <li *ngFor="let item of (items$ | async)">
+    {{place.place}}
+  </li>
+</ul>

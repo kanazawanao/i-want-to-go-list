@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  FormControl
-} from '@angular/forms';
 import { Place } from 'src/app/models/place';
+import { PlaceService } from 'src/app/services/place.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-place-regist',
@@ -13,30 +9,32 @@ import { Place } from 'src/app/models/place';
   styleUrls: ['./place-regist.component.scss']
 })
 export class PlaceRegistComponent implements OnInit {
-  placeRegistForm: FormGroup;
-
-  place = new FormControl('');
-  prefectures = new FormControl('');
-  addr = new FormControl('');
-
-  constructor(private fb: FormBuilder) {}
+  place: Place = {
+    addr:'',
+    id:'',
+    place:'',
+    prefectures:'',
+    userId:'',
+    went:false
+  };
+  uid = '';
+  constructor(
+    private placeService: PlaceService,
+    public auth: AuthService) {}
 
   ngOnInit() {
-    this.placeRegistForm = this.fb.group({
-      place: ['', [Validators.required]],
-      prefectures: ['', [Validators.required]],
-      addr: ['', [Validators.required]],
-      went: ['', [Validators.required]]
-    });
+    this.auth.user.subscribe(u => this.uid = u.uid);
   }
 
   regist() {
     console.log('登録実行！');
 
-    const place = this.placeRegistForm.get('place').value;
-    const prefectures = this.placeRegistForm.get('prefectures').value;
-    const addr = this.placeRegistForm.get('addr').value;
-
+    // const place = this.placeRegistForm.get('place').value;
+    // const prefectures = this.placeRegistForm.get('prefectures').value;
+    // const addr = this.placeRegistForm.get('addr').value;
+    this.place.userId = this.uid;
+    console.log(this.place);
+    this.placeService.addPlace(this.place);
     // const went = this.placeRegistForm.get('went');
   }
 }
