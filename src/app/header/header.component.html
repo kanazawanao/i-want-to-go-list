@@ -8,10 +8,7 @@
   <span>
     <a mat-button routerLink="" class="header-button">ランダム目的地</a>
   </span>
-  <span>
-    <a mat-button routerLink="login" class="header-button">Login</a>
-  </span>
-  <span>
+  <span *ngIf="auth.user | async as user">
     <a mat-button class="header-button" (click)="logout()">Logout</a>
   </span>
 </mat-toolbar>

@@ -10,31 +10,26 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class PlaceRegistComponent implements OnInit {
   place: Place = {
-    addr:'',
-    id:'',
-    place:'',
-    prefectures:'',
-    userId:'',
-    went:false
+    addr: '',
+    id: '',
+    place: '',
+    prefectures: '',
+    userId: '',
+    went: false
   };
   uid = '';
-  constructor(
-    private placeService: PlaceService,
-    public auth: AuthService) {}
+  constructor(private placeService: PlaceService, public auth: AuthService) {}
 
   ngOnInit() {
-    this.auth.user.subscribe(u => this.uid = u.uid);
+    this.auth.user.subscribe(u => {
+      if (u) {
+        this.uid = u.uid;
+      }
+    });
   }
 
   regist() {
-    console.log('登録実行！');
-
-    // const place = this.placeRegistForm.get('place').value;
-    // const prefectures = this.placeRegistForm.get('prefectures').value;
-    // const addr = this.placeRegistForm.get('addr').value;
     this.place.userId = this.uid;
-    console.log(this.place);
     this.placeService.addPlace(this.place);
-    // const went = this.placeRegistForm.get('went');
   }
 }

@@ -21,6 +21,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule } from '@angular/router';
 import { PlaceRegistComponent } from './pages/place-regist/place-regist.component';
 import { PlaceListComponent } from './pages/place-list/place-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -43,13 +44,13 @@ import { PlaceListComponent } from './pages/place-list/place-list.component';
     AngularFirestoreModule,
     MatButtonModule,
     MatToolbarModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    RouterModule
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production
+    }),
+    RouterModule,
+    BrowserAnimationsModule
   ],
-  providers: [
-    AuthService,
-    AuthGuard
-  ],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
