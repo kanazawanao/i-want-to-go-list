@@ -9,7 +9,7 @@ export class PlaceService {
   // private itemDocument: AngularFirestoreDocument<Place>;
   private collection: AngularFirestoreCollection<Place>;
   constructor(private afStore: AngularFirestore) {
-    this.collection = this.afStore.collection('places');
+    this.collection = this.afStore.collection<Place>('places');
   }
 
   addPlace(place: Place): void {

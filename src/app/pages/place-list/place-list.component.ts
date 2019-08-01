@@ -9,11 +9,10 @@ import { Place } from 'src/app/models/place';
   styleUrls: ['./place-list.component.scss']
 })
 export class PlaceListComponent implements OnInit {
-  items: Observable<Place[]>;
+  items$: Observable<Place[]>;
   constructor(private placeService: PlaceService) { }
 
   ngOnInit() {
-    this.items = this.placeService.getAllPlace();
+    this.items$ = this.placeService.getAllPlace();
   }
-
 }
