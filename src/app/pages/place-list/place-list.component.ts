@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PlaceService } from 'src/app/services/place.service';
 import { Observable, Subscription } from 'rxjs';
 import { Place } from 'src/app/models/place';
-import { filter, map } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,7 +10,6 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./place-list.component.scss']
 })
 export class PlaceListComponent implements OnInit, OnDestroy {
-
   items$?: Observable<Place[]>;
   selectedPlace: Place | null = null;
   subscriptions: Subscription[] = [];
@@ -19,8 +17,13 @@ export class PlaceListComponent implements OnInit, OnDestroy {
   constructor(private placeService: PlaceService, private auth: AuthService) {}
 
   ngOnInit() {
-    console.log(this.auth.userId);
-    this.items$ = this.placeService.searchPlaces(this.auth.userId);
+    // TODO: userIdを保持する仕組みが足りない
+    this.auth.user.subscribe(u => {
+      if (u) {
+        this.uid = u.uid;
+      }
+    });
+    this.items$ = this.placeService.searchPlacesByUserId(this.auth.userId);
   }
 
   ngOnDestroy() {

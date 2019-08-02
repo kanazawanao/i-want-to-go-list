@@ -2,14 +2,24 @@
 
 <p>
   名称：
-  <input [(ngModel)]="place.place" placeholder="place"/>
+  <input [(ngModel)]="place.place" placeholder="place" />
+</p>
+<p>
+  <mat-form-field>
+    <mat-label>都道府県</mat-label>
+    <mat-select [(ngModel)]="place.prefecture">
+      <mat-option
+        *ngFor="let prefecture of prefectures"
+        [value]="prefecture.name"
+      >
+        {{ prefecture.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </p>
 <p>
   住所：
-  <input [(ngModel)]="place.addr" placeholder="addr"/>
+  <input [(ngModel)]="place.addr" placeholder="addr" />
 </p>
-<p>
-  都道府県：
-  <input [(ngModel)]="place.prefectures" placeholder="prefectures"/>
-</p>
+
 <button type="submit" class="button" (click)="regist()">登録</button>

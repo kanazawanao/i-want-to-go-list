@@ -2,7 +2,7 @@ export class Place {
   id = '';
   userId = '';
   place = '';
-  prefectures = '';
+  prefecture = '';
   addr = '';
   went = false;
 }

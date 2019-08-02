@@ -5,6 +5,7 @@ import {
 } from '@angular/fire/firestore';
 import { Place } from '../models/place';
 import { filter, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,20 +17,24 @@ export class PlaceService {
   }
 
   addPlace(place: Place): void {
-    const id = place.id = this.afStore.createId();
-    this.collection.doc(id).set(place);
+    const id = (place.id = this.afStore.createId());
+    this.collection
+      .doc(id)
+      .set(Object.assign({}, JSON.parse(JSON.stringify(place))));
   }
 
   updatePlace(place: Place) {
     this.collection.doc(place.id).update(place);
   }
 
-  getAllPlace() {
+  getAllPlace(): Observable<Place[]> {
     return this.collection.valueChanges();
   }
 
-  searchPlaces(userId: string) {
-    return this.collection.valueChanges().pipe(map(p => p.filter(i => i.userId === userId)));
+  searchPlacesByUserId(userId: string): Observable<Place[]> {
+    return this.collection
+      .valueChanges()
+      .pipe(map(p => p.filter(i => i.userId === userId)));
   }
 
   deletePlace(place: Place) {

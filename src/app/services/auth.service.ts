@@ -33,24 +33,30 @@ export class AuthService {
     );
   }
 
-  siginUp(email: string, password: string) {
-    return this.afAuth.auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(credential => {
-        this.userId = credential.user ? credential.user.uid : '';
-        return this.userService.addUser(this.createUser(credential.user));
-      })
-      .catch(err => console.log(err));
+  async siginUp(email: string, password: string) {
+    try {
+      const credential = await this.afAuth.auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      this.userId = credential.user ? credential.user.uid : '';
+      return this.userService.addUser(this.createUser(credential.user));
+    } catch (err) {
+      return console.log(err);
+    }
   }
 
-  login(email: string, password: string): Promise<any> {
-    return this.afAuth.auth
-      .signInWithEmailAndPassword(email, password)
-      .then(credential => {
-        this.userId = credential.user ? credential.user.uid : '';
-        return this.userService.updateUser(this.createUser(credential.user));
-      })
-      .catch(err => console.log(err));
+  async login(email: string, password: string) {
+    try {
+      const credential = await this.afAuth.auth.signInWithEmailAndPassword(
+        email,
+        password
+      );
+      this.userId = credential.user ? credential.user.uid : '';
+      return this.userService.updateUser(this.createUser(credential.user));
+    } catch (err) {
+      return console.log(err);
+    }
   }
 
   googleLogin() {
@@ -64,14 +70,14 @@ export class AuthService {
     });
   }
 
-  private oAuthLogin(provider: firebase.auth.AuthProvider) {
-    return this.afAuth.auth
-      .signInWithPopup(provider)
-      .then(credential => {
-        this.userId = credential.user ? credential.user.uid : '';
-        return this.userService.updateUser(this.createUser(credential.user));
-      })
-      .catch(err => console.log(err));
+  private async oAuthLogin(provider: firebase.auth.AuthProvider) {
+    try {
+      const credential = await this.afAuth.auth.signInWithPopup(provider);
+      this.userId = credential.user ? credential.user.uid : '';
+      return this.userService.updateUser(this.createUser(credential.user));
+    } catch (err) {
+      return console.log(err);
+    }
   }
 
   private createUser(crediential: firebase.auth.UserCredential | any) {
