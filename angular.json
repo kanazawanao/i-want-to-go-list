@@ -126,7 +126,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/i-want-to-go-list-server",
+            "outputPath": "public/i-want-to-go-list-server",
             "main": "src/main.server.ts",
             "tsConfig": "tsconfig.server.json"
           },

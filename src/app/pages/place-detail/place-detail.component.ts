@@ -7,7 +7,7 @@ import { Place } from 'src/app/models/place';
   styleUrls: ['./place-detail.component.scss']
 })
 export class PlaceDetailComponent implements OnInit {
-  @Input() place: Place = new Place();
+  @Input() place: Place | null = null;
   constructor() {}
 
   ngOnInit() {}

@@ -15,12 +15,11 @@ export class UserService {
   }
 
   addUser(user: User) {
-    console.log(user);
-    this.collection.doc(user.uid).set(user);
+    // カスタムobjectは登録できないといわれるので、無理やり変換して登録しちゃう
+    this.collection.doc(user.uid).set(Object.assign({},JSON.parse(JSON.stringify(user))));
   }
 
   updateUser(user: User) {
-    console.log(user);
     this.collection.doc(user.uid).update(user);
   }
 }
