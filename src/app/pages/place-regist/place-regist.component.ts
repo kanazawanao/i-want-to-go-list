@@ -18,7 +18,7 @@ export class PlaceRegistComponent implements OnInit {
     went: false
   };
   uid = '';
-  constructor(private placeService: PlaceService, public auth: AuthService) {}
+  constructor(private placeService: PlaceService, private auth: AuthService) {}
 
   ngOnInit() {
     this.auth.user.subscribe(u => {

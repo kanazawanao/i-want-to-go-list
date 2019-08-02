@@ -1,20 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PlaceService } from 'src/app/services/place.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Place } from 'src/app/models/place';
+import { filter, map } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-place-list',
   templateUrl: './place-list.component.html',
   styleUrls: ['./place-list.component.scss']
 })
-export class PlaceListComponent implements OnInit {
+export class PlaceListComponent implements OnInit, OnDestroy {
+
   items$?: Observable<Place[]>;
   selectedPlace: Place | null = null;
-  constructor(private placeService: PlaceService) {}
+  subscriptions: Subscription[] = [];
+  uid = '';
+  constructor(private placeService: PlaceService, private auth: AuthService) {}
 
   ngOnInit() {
-    this.items$ = this.placeService.getAllPlace();
+    console.log(this.auth.userId);
+    this.items$ = this.placeService.searchPlaces(this.auth.userId);
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
   delete(place: Place) {

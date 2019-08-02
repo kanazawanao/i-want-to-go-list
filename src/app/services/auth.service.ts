@@ -14,6 +14,7 @@ import { Place } from '../models/place';
 })
 export class AuthService {
   user: Observable<User | null | undefined>;
+  userId = '';
   places?: Observable<Place[] | null>;
   constructor(
     private router: Router,
@@ -35,9 +36,9 @@ export class AuthService {
   siginUp(email: string, password: string) {
     return this.afAuth.auth
       .createUserWithEmailAndPassword(email, password)
-      .then(user => {
-        console.log(user);
-        return this.userService.addUser(this.createUser(user.user));
+      .then(credential => {
+        this.userId = credential.user ? credential.user.uid : '';
+        return this.userService.addUser(this.createUser(credential.user));
       })
       .catch(err => console.log(err));
   }
@@ -45,9 +46,9 @@ export class AuthService {
   login(email: string, password: string): Promise<any> {
     return this.afAuth.auth
       .signInWithEmailAndPassword(email, password)
-      .then(user => {
-        console.log(user);
-        return this.userService.updateUser(this.createUser(user.user));
+      .then(credential => {
+        this.userId = credential.user ? credential.user.uid : '';
+        return this.userService.updateUser(this.createUser(credential.user));
       })
       .catch(err => console.log(err));
   }
@@ -67,7 +68,7 @@ export class AuthService {
     return this.afAuth.auth
       .signInWithPopup(provider)
       .then(credential => {
-        console.log(credential.user);
+        this.userId = credential.user ? credential.user.uid : '';
         return this.userService.updateUser(this.createUser(credential.user));
       })
       .catch(err => console.log(err));

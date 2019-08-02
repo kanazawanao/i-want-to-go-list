@@ -4,6 +4,7 @@ import {
   AngularFirestoreCollection
 } from '@angular/fire/firestore';
 import { Place } from '../models/place';
+import { filter, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,7 @@ export class PlaceService {
   }
 
   addPlace(place: Place): void {
-    const id = this.afStore.createId();
-    place.id = id;
+    const id = place.id = this.afStore.createId();
     this.collection.doc(id).set(place);
   }
 
@@ -26,6 +26,10 @@ export class PlaceService {
 
   getAllPlace() {
     return this.collection.valueChanges();
+  }
+
+  searchPlaces(userId: string) {
+    return this.collection.valueChanges().pipe(map(p => p.filter(i => i.userId === userId)));
   }
 
   deletePlace(place: Place) {
