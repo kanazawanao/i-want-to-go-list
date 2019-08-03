@@ -26,5 +26,6 @@ export class PlaceRegistComponent implements OnInit {
   regist() {
     this.place.userId = this.uid;
     this.placeService.addPlace(this.place);
+    alert('登録しました。');
   }
 }

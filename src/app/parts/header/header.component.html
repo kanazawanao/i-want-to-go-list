@@ -1,20 +1,41 @@
 <mat-toolbar color="primary">
-  <span>
+  <div>
     <a mat-button routerLink="placeList" class="header-button">
       一覧
     </a>
-  </span>
-  <span>
+  </div>
+  <div>
     <a mat-button routerLink="placeRegist" class="header-button">
       追加
     </a>
-  </span>
-  <span>
+  </div>
+  <div>
     <a mat-button routerLink="placeRandom" class="header-button">
       ランダム目的地
     </a>
-  </span>
-  <span *ngIf="auth.user | async as user">
-    <a mat-button class="header-button" (click)="logout()">Logout</a>
-  </span>
+  </div>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <div *ngIf="auth.loggedIn; else loggedOff">
+      <button mat-menu-item>
+        <a mat-button class="header-button" (click)="logout()">
+          logout
+        </a>
+      </button>
+    </div>
+    <ng-template #loggedOff>
+      <button mat-menu-item>
+        <a mat-button routerLink="login" class="header-button">
+          login
+        </a>
+      </button>
+      <button mat-menu-item>
+        <a mat-button routerLink="signup" class="header-button">
+          signup
+        </a>
+      </button>
+    </ng-template>
+  </mat-menu>
 </mat-toolbar>

@@ -19,5 +19,6 @@ export class UserInfoComponent implements OnInit {
 
   update() {
     this.userService.updateUser(this.user);
+    alert('更新しました。');
   }
 }

@@ -4,7 +4,7 @@ import {
   AngularFirestoreCollection
 } from '@angular/fire/firestore';
 import { Place } from '../models/place';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Injectable({

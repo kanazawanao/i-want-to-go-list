@@ -14,6 +14,7 @@ import { UserService } from './user.service';
 export class AuthService {
   user: Observable<User | null | undefined>;
   userId = '';
+  loggedIn = false;
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
@@ -24,8 +25,10 @@ export class AuthService {
       switchMap(user => {
         if (user) {
           this.userId = user.uid;
+          this.loggedIn = true;
           return this.afStore.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
+          this.loggedIn = false;
           return of(null);
         }
       })
