@@ -1,27 +1,39 @@
 <mat-toolbar color="primary">
-  <div>
-    <a mat-button routerLink="placeList" class="header-button">
-      一覧
-    </a>
+  <div *ngIf="auth.loggedIn">
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
   </div>
-  <div>
-    <a mat-button routerLink="placeRegist" class="header-button">
-      追加
-    </a>
-  </div>
-  <div>
-    <a mat-button routerLink="placeRandom" class="header-button">
-      ランダム目的地
-    </a>
-  </div>
-  <button mat-button [matMenuTriggerFor]="menu">
-    <mat-icon>menu</mat-icon>
-  </button>
   <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <a mat-button routerLink="placeList" class="header-button">
+        一覧
+      </a>
+    </button>
+    <button mat-menu-item>
+      <a mat-button routerLink="placeRegist" class="header-button">
+        追加
+      </a>
+    </button>
+    <button mat-menu-item>
+      <a mat-button routerLink="placeRandom" class="header-button">
+        ランダム目的地
+      </a>
+    </button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="userMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #userMenu="matMenu">
     <div *ngIf="auth.loggedIn; else loggedOff">
       <button mat-menu-item>
         <a mat-button class="header-button" (click)="logout()">
           logout
+        </a>
+      </button>
+      <button mat-menu-item>
+        <a mat-button routerLink="userinfo" class="header-button">
+          account
         </a>
       </button>
     </div>

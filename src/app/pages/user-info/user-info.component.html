@@ -2,13 +2,16 @@
 
 <h2>ユーザー情報</h2>
 <p>プロフィール画像:</p>
-<p>Email:
-  <input [(ngModel)]="user.email" placeholder="email"/>
+<p>
+  Email:
+  <input type="email" [(ngModel)]="user.email" placeholder="email" />
 </p>
-<p>名前:
-  <input [(ngModel)]="user.displayName" placeholder="displayName"/>
+<p>
+  名前:
+  <input type="text" [(ngModel)]="user.displayName" placeholder="displayName" />
 </p>
-<p>プロフィール:
-  <input [(ngModel)]="user.profile" placeholder="profile"/>
+<p>
+  プロフィール:
+  <input type="text" [(ngModel)]="user.profile" placeholder="profile" />
 </p>
 <button type="submit" (click)="update()">更新</button>
