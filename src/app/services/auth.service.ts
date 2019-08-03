@@ -7,7 +7,6 @@ import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from './../models/user';
 import { UserService } from './user.service';
-import { Place } from '../models/place';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,6 @@ import { Place } from '../models/place';
 export class AuthService {
   user: Observable<User | null | undefined>;
   userId = '';
-  places?: Observable<Place[] | null>;
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
@@ -25,6 +23,7 @@ export class AuthService {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
+          this.userId = user.uid;
           return this.afStore.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
@@ -39,7 +38,6 @@ export class AuthService {
         email,
         password
       );
-      this.userId = credential.user ? credential.user.uid : '';
       return this.userService.addUser(this.createUser(credential.user));
     } catch (err) {
       return console.log(err);
@@ -52,7 +50,6 @@ export class AuthService {
         email,
         password
       );
-      this.userId = credential.user ? credential.user.uid : '';
       return this.userService.updateUser(this.createUser(credential.user));
     } catch (err) {
       return console.log(err);
@@ -73,7 +70,6 @@ export class AuthService {
   private async oAuthLogin(provider: firebase.auth.AuthProvider) {
     try {
       const credential = await this.afAuth.auth.signInWithPopup(provider);
-      this.userId = credential.user ? credential.user.uid : '';
       return this.userService.updateUser(this.createUser(credential.user));
     } catch (err) {
       return console.log(err);

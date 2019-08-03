@@ -17,12 +17,6 @@ export class PlaceListComponent implements OnInit, OnDestroy {
   constructor(private placeService: PlaceService, private auth: AuthService) {}
 
   ngOnInit() {
-    // TODO: userIdを保持する仕組みが足りない
-    this.auth.user.subscribe(u => {
-      if (u) {
-        this.uid = u.uid;
-      }
-    });
     this.items$ = this.placeService.searchPlacesByUserId(this.auth.userId);
   }
 
