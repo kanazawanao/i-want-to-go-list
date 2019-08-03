@@ -1,12 +1,18 @@
 <mat-toolbar color="primary">
   <span>
-    <a mat-button routerLink="placeList" class="header-button">一覧</a>
+    <a mat-button routerLink="placeList" class="header-button">
+      一覧
+    </a>
   </span>
   <span>
-    <a mat-button routerLink="placeRegist" class="header-button">追加</a>
+    <a mat-button routerLink="placeRegist" class="header-button">
+      追加
+    </a>
   </span>
   <span>
-    <a mat-button routerLink="" class="header-button">ランダム目的地</a>
+    <a mat-button routerLink="placeRandom" class="header-button">
+      ランダム目的地
+    </a>
   </span>
   <span *ngIf="auth.user | async as user">
     <a mat-button class="header-button" (click)="logout()">Logout</a>
