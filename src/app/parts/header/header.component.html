@@ -1,4 +1,5 @@
 <mat-toolbar color="primary">
+  <mat-icon>motorcycle</mat-icon>
   <div *ngIf="auth.loggedIn">
     <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
@@ -7,16 +8,19 @@
   <mat-menu #menu="matMenu">
     <button mat-menu-item>
       <a mat-button routerLink="placeList" class="header-button">
+        <mat-icon>list</mat-icon>
         一覧
       </a>
     </button>
     <button mat-menu-item>
       <a mat-button routerLink="placeRegist" class="header-button">
+        <mat-icon>add_location</mat-icon>
         追加
       </a>
     </button>
     <button mat-menu-item>
       <a mat-button routerLink="placeRandom" class="header-button">
+        <mat-icon>search</mat-icon>
         ランダム目的地
       </a>
     </button>
@@ -28,11 +32,13 @@
     <div *ngIf="auth.loggedIn; else loggedOff">
       <button mat-menu-item>
         <a mat-button class="header-button" (click)="logout()">
+          <mat-icon>power_settings_new</mat-icon>
           logout
         </a>
       </button>
       <button mat-menu-item>
         <a mat-button routerLink="userinfo" class="header-button">
+          <mat-icon>face</mat-icon>
           account
         </a>
       </button>
@@ -40,11 +46,13 @@
     <ng-template #loggedOff>
       <button mat-menu-item>
         <a mat-button routerLink="login" class="header-button">
+          <mat-icon>exit_to_app</mat-icon>
           login
         </a>
       </button>
       <button mat-menu-item>
         <a mat-button routerLink="signup" class="header-button">
+          <mat-icon>person_add</mat-icon>
           signup
         </a>
       </button>
