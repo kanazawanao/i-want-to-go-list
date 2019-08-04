@@ -26,6 +26,7 @@ import { PlaceRandomComponent } from './pages/place-random/place-random.componen
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { SelectPrefecturesComponent } from './parts/select-prefectures/select-prefectures.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     PlaceRegistComponent,
     PlaceListComponent,
     PlaceDetailComponent,
-    PlaceRandomComponent
+    PlaceRandomComponent,
+    SelectPrefecturesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

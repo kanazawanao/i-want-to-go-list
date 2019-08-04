@@ -10,4 +10,7 @@
   </li>
 </ul>
 
-<app-place-detail [place]="selectedPlace"></app-place-detail>
+<app-place-detail
+  [place]="selectedPlace"
+  (updatePlaceInfo)="update($event)"
+></app-place-detail>

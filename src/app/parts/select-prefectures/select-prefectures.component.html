@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-label>都道府県</mat-label>
+  <mat-select [(ngModel)]="place.prefecture">
+    <mat-option
+      *ngFor="let prefecture of prefectures"
+      [value]="prefecture.name"
+    >
+      {{ prefecture.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

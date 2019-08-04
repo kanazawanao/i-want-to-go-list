@@ -24,7 +24,9 @@ export class PlaceService {
   }
 
   updatePlace(place: Place) {
-    this.collection.doc(place.id).update(place);
+    this.collection
+      .doc(place.id)
+      .update(Object.assign({}, JSON.parse(JSON.stringify(place))));
   }
 
   getAllPlace(): Observable<Place[]> {

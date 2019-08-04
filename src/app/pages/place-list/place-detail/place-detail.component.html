@@ -7,10 +7,7 @@
     </label>
   </div>
   <div>
-    <label>
-      都道府県:
-      <input [(ngModel)]="place.prefecture" placeholder="prefecture" />
-    </label>
+    <app-select-prefectures [place]="place"></app-select-prefectures>
   </div>
   <div>
     <label>
@@ -18,4 +15,5 @@
       <input [(ngModel)]="place.addr" placeholder="addr" />
     </label>
   </div>
+  <button type="submit" class="button" (click)="update()">更新</button>
 </div>

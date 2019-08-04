@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Place } from 'src/app/models/place';
 
 @Component({
@@ -8,7 +8,12 @@ import { Place } from 'src/app/models/place';
 })
 export class PlaceDetailComponent implements OnInit {
   @Input() place: Place | null = null;
+  @Output() updatePlaceInfo: EventEmitter<any> = new EventEmitter();
   constructor() {}
 
   ngOnInit() {}
+
+  protected update() {
+    this.updatePlaceInfo.emit(this.place);
+  }
 }

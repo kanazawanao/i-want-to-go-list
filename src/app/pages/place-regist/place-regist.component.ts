@@ -12,7 +12,6 @@ import { PREFECTURES, Prefecture } from 'src/app/models/prefecture';
 export class PlaceRegistComponent implements OnInit {
   place: Place = new Place();
   uid = '';
-  prefectures: Prefecture[] = PREFECTURES;
   constructor(private placeService: PlaceService, private auth: AuthService) {}
 
   ngOnInit() {
