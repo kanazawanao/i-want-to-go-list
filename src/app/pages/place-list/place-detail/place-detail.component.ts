@@ -10,7 +10,9 @@ export class PlaceDetailComponent implements OnInit {
   @Input() place: Place | null = null;
   @Output() updatePlaceInfo: EventEmitter<any> = new EventEmitter();
   get googleMapLink(): string {
-    return this.place ? 'http://maps.apple.com/?daddr=' + this.place.addr : '';
+    return this.place
+      ? 'https://www.google.com/maps/search/?api=1&query=' + this.place.addr
+      : '';
   }
   constructor() {}
 

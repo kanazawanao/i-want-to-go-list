@@ -1,17 +1,21 @@
 <div *ngIf="place">
   <h2>Details</h2>
   <p>
-    名称：
+    place：
     <input [(ngModel)]="place.place" placeholder="place" />
   </p>
   <app-select-prefectures [place]="place"></app-select-prefectures>
   <p>
-    住所:
+    addr:
     <input [(ngModel)]="place.addr" placeholder="addr" />
     <a [href]="googleMapLink">地図アプリで見る</a>
   </p>
   <p>
+    price:
+    <input type="number" [(ngModel)]="place.price" placeholder="price" />
+  </p>
+  <p>
     <mat-checkbox [(ngModel)]="place.went">went</mat-checkbox>
   </p>
-  <button type="submit" class="button" (click)="update()">更新</button>
+  <button type="submit" class="button" (click)="update()">update</button>
 </div>

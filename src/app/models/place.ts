@@ -5,4 +5,5 @@ export class Place {
   prefecture = '';
   addr = '';
   went = false;
+  price = 0;
 }

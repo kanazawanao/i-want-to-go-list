@@ -1,11 +1,10 @@
-<h1>自動選択</h1>
-<h2>検索条件</h2>
+<h1>select</h1>
+<h2>search</h2>
 <app-select-prefectures [place]="placeSearchCondition"></app-select-prefectures>
 <button type="submit" class="button" (click)="search()">検索</button>
-<h2>検索結果</h2>
+<h2>result</h2>
 <ul>
   <li *ngFor="let result of results$ | async">
-    名称：
     {{ result.place }}
   </li>
 </ul>

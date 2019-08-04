@@ -1,17 +1,16 @@
-<h1>ようこそ {{ user.displayName }}</h1>
+<h1>Welcome {{ user.displayName }}</h1>
 
-<h2>ユーザー情報</h2>
-<p>プロフィール画像:</p>
+<h2>User Info</h2>
 <p>
   Email:
   <input type="email" [(ngModel)]="user.email" placeholder="email" />
 </p>
 <p>
-  名前:
+  name:
   <input type="text" [(ngModel)]="user.displayName" placeholder="displayName" />
 </p>
 <p>
-  プロフィール:
+  profile:
   <input type="text" [(ngModel)]="user.profile" placeholder="profile" />
 </p>
-<button type="submit" (click)="update()">更新</button>
+<button type="submit" (click)="update()">update</button>

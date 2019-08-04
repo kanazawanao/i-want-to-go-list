@@ -1,15 +1,19 @@
-<h1>行きたい場所登録</h1>
+<h1>Add</h1>
 
 <p>
-  名称：
+  place：
   <input type="text" [(ngModel)]="place.place" placeholder="place" />
 </p>
 <p>
   <app-select-prefectures [place]="place"></app-select-prefectures>
 </p>
 <p>
-  住所：
+  addr：
   <input type="text" [(ngModel)]="place.addr" placeholder="addr" />
 </p>
+<p>
+  price：
+  <input type="number" [(ngModel)]="place.price" placeholder="price" />
+</p>
 
-<button type="submit" class="button" (click)="regist()">登録</button>
+<button type="submit" class="button" (click)="regist()">add</button>
