@@ -23,6 +23,9 @@ import { PlaceRegistComponent } from './pages/place-regist/place-regist.componen
 import { PlaceListComponent } from './pages/place-list/place-list.component';
 import { PlaceDetailComponent } from './pages/place-list/place-detail/place-detail.component';
 import { PlaceRandomComponent } from './pages/place-random/place-random.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './state';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,15 @@ import { PlaceRandomComponent } from './pages/place-random/place-random.componen
     }),
     RouterModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

@@ -163,5 +163,8 @@
       }
     }
   },
-  "defaultProject": "i-want-to-go-list"
+  "defaultProject": "i-want-to-go-list",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
