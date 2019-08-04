@@ -10,14 +10,14 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./place-list.component.scss']
 })
 export class PlaceListComponent implements OnInit, OnDestroy {
-  items$?: Observable<Place[]>;
+  places$?: Observable<Place[]>;
   selectedPlace: Place | null = null;
   subscriptions: Subscription[] = [];
   uid = '';
   constructor(private placeService: PlaceService, private auth: AuthService) {}
 
   ngOnInit() {
-    this.items$ = this.placeService.searchPlacesByUserId(this.auth.userId);
+    this.places$ = this.placeService.searchPlacesByUserId(this.auth.userId);
   }
 
   ngOnDestroy() {

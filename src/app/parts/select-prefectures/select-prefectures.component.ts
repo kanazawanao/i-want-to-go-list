@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Prefecture, PREFECTURES } from 'src/app/models/prefecture';
+import { Prefecture, PREFECTURES } from './prefecture';
 import { Place } from 'src/app/models/place';
 
 @Component({
@@ -8,7 +8,7 @@ import { Place } from 'src/app/models/place';
   styleUrls: ['./select-prefectures.component.scss']
 })
 export class SelectPrefecturesComponent implements OnInit {
-  @Input() place!: Place;
+  @Input() place: Place = new Place();
   prefectures: Prefecture[] = PREFECTURES;
   constructor() {}
 

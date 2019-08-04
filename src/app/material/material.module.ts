@@ -5,13 +5,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 const modules = [
   MatToolbarModule,
   MatButtonModule,
   MatSelectModule,
   MatAutocompleteModule,
   MatIconModule,
-  MatMenuModule
+  MatMenuModule,
+  MatCheckboxModule
 ];
 @NgModule({
   imports: [...modules],

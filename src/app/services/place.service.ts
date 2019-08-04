@@ -39,6 +39,12 @@ export class PlaceService {
       .pipe(map(p => p.filter(i => i.userId === userId)));
   }
 
+  searchPlaces(condition: Place): Observable<Place[]> {
+    return this.collection
+      .valueChanges()
+      .pipe(map(p => p.filter(i => i.prefecture === condition.prefecture)));
+  }
+
   deletePlace(place: Place) {
     this.collection.doc(place.id).delete();
   }

@@ -1,19 +1,16 @@
 <div *ngIf="place">
   <h2>Details</h2>
-  <div>
-    <label>
-      名称：
-      <input [(ngModel)]="place.place" placeholder="place" />
-    </label>
-  </div>
-  <div>
-    <app-select-prefectures [place]="place"></app-select-prefectures>
-  </div>
-  <div>
-    <label>
-      住所:
-      <input [(ngModel)]="place.addr" placeholder="addr" />
-    </label>
-  </div>
+  <p>
+    名称：
+    <input [(ngModel)]="place.place" placeholder="place" />
+  </p>
+  <app-select-prefectures [place]="place"></app-select-prefectures>
+  <p>
+    住所:
+    <input [(ngModel)]="place.addr" placeholder="addr" />
+  </p>
+  <p>
+    <mat-checkbox [(ngModel)]="place.went">went</mat-checkbox>
+  </p>
   <button type="submit" class="button" (click)="update()">更新</button>
 </div>

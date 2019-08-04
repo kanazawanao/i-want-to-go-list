@@ -1,7 +1,7 @@
 <h1>行きたい場所リスト</h1>
 
 <ul>
-  <li *ngFor="let place of items$ | async" (click)="onSelect(place)">
+  <li *ngFor="let place of places$ | async" (click)="onSelect(place)">
     名称：
     {{ place.place }}
     <button class="delete" title="delete place" (click)="delete(place)">
