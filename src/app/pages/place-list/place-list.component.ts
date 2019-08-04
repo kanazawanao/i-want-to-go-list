@@ -13,7 +13,6 @@ export class PlaceListComponent implements OnInit, OnDestroy {
   places$?: Observable<Place[]>;
   selectedPlace: Place | null = null;
   subscriptions: Subscription[] = [];
-  uid = '';
   constructor(private placeService: PlaceService, private auth: AuthService) {}
 
   ngOnInit() {

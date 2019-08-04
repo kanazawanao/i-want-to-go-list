@@ -9,6 +9,9 @@ import { Place } from 'src/app/models/place';
 export class PlaceDetailComponent implements OnInit {
   @Input() place: Place | null = null;
   @Output() updatePlaceInfo: EventEmitter<any> = new EventEmitter();
+  get googleMapLink(): string {
+    return this.place ? 'http://maps.apple.com/?daddr=' + this.place.addr : '';
+  }
   constructor() {}
 
   ngOnInit() {}
