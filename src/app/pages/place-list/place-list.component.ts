@@ -25,11 +25,13 @@ export class PlaceListComponent implements OnInit, OnDestroy {
 
   delete(place: Place) {
     this.placeService.deletePlace(place);
+    alert('削除しました。');
     this.selectedPlace = null;
   }
 
   update(place: Place) {
     this.placeService.updatePlace(place);
+    alert('登録しました。');
   }
 
   onSelect(place: Place) {

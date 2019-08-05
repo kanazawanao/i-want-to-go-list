@@ -1,16 +1,19 @@
 <h1>Welcome {{ user.displayName }}</h1>
 
 <h2>User Info</h2>
-<p>
-  Email:
-  <input type="email" [(ngModel)]="user.email" placeholder="email" />
-</p>
-<p>
-  name:
-  <input type="text" [(ngModel)]="user.displayName" placeholder="displayName" />
-</p>
-<p>
-  profile:
-  <input type="text" [(ngModel)]="user.profile" placeholder="profile" />
-</p>
+<div>
+  <mat-form-field class="example-full-width">
+    <input matInput type="email" placeholder="email" [(ngModel)]="user.email">
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" placeholder="name" [(ngModel)]="user.displayName">
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" placeholder="profile" [(ngModel)]="user.profile">
+  </mat-form-field>
+</div>
 <button type="submit" (click)="update()">update</button>

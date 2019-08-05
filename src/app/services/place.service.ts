@@ -42,7 +42,7 @@ export class PlaceService {
   searchPlaces(condition: Place): Observable<Place[]> {
     return this.collection
       .valueChanges()
-      .pipe(map(p => p.filter(i => i.prefecture === condition.prefecture)));
+      .pipe(map(p => p.filter(i => ((i.prefecture === condition.prefecture) && (i.userId === condition.userId)))));
   }
 
   deletePlace(place: Place) {

@@ -1,19 +1,22 @@
 <h1>Add</h1>
 
-<p>
-  place：
-  <input type="text" [(ngModel)]="place.place" placeholder="place" />
-</p>
-<p>
+<div>
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" placeholder="place" [(ngModel)]="place.place">
+  </mat-form-field>
+</div>
+<div>
   <app-select-prefectures [place]="place"></app-select-prefectures>
-</p>
-<p>
-  addr：
-  <input type="text" [(ngModel)]="place.addr" placeholder="addr" />
-</p>
-<p>
-  price：
-  <input type="number" [(ngModel)]="place.price" placeholder="price" />
-</p>
+</div>
+<div>
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" placeholder="addr" [(ngModel)]="place.addr">
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field class="example-full-width">
+    <input matInput type="number" placeholder="price" [(ngModel)]="place.price">
+  </mat-form-field>
+</div>
 
 <button type="submit" class="button" (click)="regist()">add</button>
