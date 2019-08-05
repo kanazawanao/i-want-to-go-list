@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PlaceRandomComponent implements OnInit {
   placeSearchCondition: Place = new Place();
   results$?: Observable<Place[]>;
+  selectedPlace: Place | null = null;
   constructor(private placeService: PlaceService, private auth: AuthService) {
     this.placeSearchCondition.userId = this.auth.userId;
   }
@@ -22,5 +23,9 @@ export class PlaceRandomComponent implements OnInit {
     // TODO: 検索中であることを表示できたら嬉しい
     this.results$ = this.placeService.searchPlaces(this.placeSearchCondition);
     // TODO: 検索結果が０件の場合の処理実装したい
+  }
+
+  onSelect(place: Place) {
+    this.selectedPlace = place;
   }
 }

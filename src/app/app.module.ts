@@ -21,7 +21,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { PlaceRegistComponent } from './pages/place-regist/place-regist.component';
 import { PlaceListComponent } from './pages/place-list/place-list.component';
-import { PlaceDetailComponent } from './pages/place-list/place-detail/place-detail.component';
+import { PlaceDetailComponent } from './pages/place-detail/place-detail.component';
 import { PlaceRandomComponent } from './pages/place-random/place-random.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './state';

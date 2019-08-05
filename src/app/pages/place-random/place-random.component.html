@@ -4,7 +4,11 @@
 <button type="submit" class="button" (click)="search()">検索</button>
 <h2>result</h2>
 <ul>
-  <li *ngFor="let result of results$ | async">
+  <li *ngFor="let result of results$ | async" (click)="onSelect(result)">
     {{ result.place }}
   </li>
 </ul>
+
+<app-place-detail
+  [place]="selectedPlace"
+></app-place-detail>
