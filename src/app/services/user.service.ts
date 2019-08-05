@@ -22,6 +22,7 @@ export class UserService {
   }
 
   updateUser(user: User) {
+    console.log(user);
     this.collection
       .doc(user.uid)
       .update(Object.assign({}, JSON.parse(JSON.stringify(user))));

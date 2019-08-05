@@ -49,11 +49,10 @@ export class AuthService {
 
   async login(email: string, password: string) {
     try {
-      const credential = await this.afAuth.auth.signInWithEmailAndPassword(
+      await this.afAuth.auth.signInWithEmailAndPassword(
         email,
         password
       );
-      return this.userService.updateUser(this.createUser(credential.user));
     } catch (err) {
       return console.log(err);
     }
@@ -72,8 +71,7 @@ export class AuthService {
 
   private async oAuthLogin(provider: firebase.auth.AuthProvider) {
     try {
-      const credential = await this.afAuth.auth.signInWithPopup(provider);
-      return this.userService.updateUser(this.createUser(credential.user));
+      await this.afAuth.auth.signInWithPopup(provider);
     } catch (err) {
       return console.log(err);
     }
