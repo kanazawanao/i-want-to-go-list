@@ -28,6 +28,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SelectPrefecturesComponent } from './parts/select-prefectures/select-prefectures.component';
 import { FilterComponent } from './parts/filter/filter.component';
 import { PlaceComponent } from './pages/place/place.component';
+import { SelectCategoryComponent } from './parts/select-category/select-category.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { PlaceComponent } from './pages/place/place.component';
     PlaceDetailComponent,
     SelectPrefecturesComponent,
     FilterComponent,
-    PlaceComponent
+    PlaceComponent,
+    SelectCategoryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

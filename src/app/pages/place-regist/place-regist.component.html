@@ -2,7 +2,7 @@
 
 <div>
   <mat-form-field class="example-full-width">
-    <input matInput type="text" placeholder="place" [(ngModel)]="place.place">
+    <input matInput type="text" placeholder="place" [(ngModel)]="place.place" />
   </mat-form-field>
 </div>
 <div>
@@ -10,15 +10,22 @@
 </div>
 <div>
   <mat-form-field class="example-full-width">
-    <input matInput type="text" placeholder="addr" [(ngModel)]="place.addr">
+    <input matInput type="text" placeholder="addr" [(ngModel)]="place.addr" />
   </mat-form-field>
 </div>
 <div>
   <mat-form-field class="example-full-width">
-    <input matInput type="number" placeholder="price" [(ngModel)]="place.price">
+    <input
+      matInput
+      type="number"
+      placeholder="price"
+      [(ngModel)]="place.price"
+    />
   </mat-form-field>
 </div>
-<!-- ジャンル選択の追加（カフェ、キャンプ、温泉、海、絶景スポットなど） -->
+<div>
+  <app-select-category [place]="place"></app-select-category>
+</div>
 <button mat-button type="button" (click)="regist()">
   <mat-icon>done</mat-icon>
   regist

@@ -42,11 +42,21 @@ export class PlaceService {
   searchPlaces(condition: Place): Observable<Place[]> {
     return this.collection
       .valueChanges()
-      .pipe(map(p => p.filter(i =>
-        (((condition.prefecture === '') || (i.prefecture === condition.prefecture))
-        && (i.went === condition.went)
-        && (i.userId === condition.userId))
-      )));
+      .pipe(
+        map(p =>
+          p.filter(
+            i =>
+              (condition.prefecture === '' ||
+                i.prefecture === '' ||
+                i.prefecture === condition.prefecture) &&
+              (condition.category === '' ||
+                i.category === '' ||
+                i.category === condition.category) &&
+              i.went === condition.went &&
+              i.userId === condition.userId
+          )
+        )
+      );
   }
 
   deletePlace(place: Place) {

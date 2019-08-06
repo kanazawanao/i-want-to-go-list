@@ -6,4 +6,5 @@ export class Place {
   addr = '';
   went = false;
   price = 0;
+  category = '';
 }

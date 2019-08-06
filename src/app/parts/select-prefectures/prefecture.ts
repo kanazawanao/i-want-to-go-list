@@ -4,6 +4,7 @@ export class Prefecture {
 }
 
 export const PREFECTURES: Prefecture[] = [
+  { cd: '00', name: '' },
   { cd: '01', name: '北海道' },
   { cd: '02', name: '青森県' },
   { cd: '03', name: '岩手県' },

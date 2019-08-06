@@ -8,7 +8,11 @@
         input search criteria
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <app-select-prefectures [place]="placeSearchCondition"></app-select-prefectures>
+    <app-select-prefectures
+      [place]="placeSearchCondition"
+    ></app-select-prefectures>
+
+    <app-select-category [place]="placeSearchCondition"></app-select-category>
     <mat-checkbox [(ngModel)]="placeSearchCondition.went">went</mat-checkbox>
   </mat-expansion-panel>
 </mat-accordion>
