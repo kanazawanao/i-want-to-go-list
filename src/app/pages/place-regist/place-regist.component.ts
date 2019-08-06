@@ -18,7 +18,7 @@ export class PlaceRegistComponent implements OnInit {
 
   regist() {
     this.placeService.addPlace(this.place);
-    alert('登録しました。');
+    alert('registered');
     // TODO: 登録したら一覧画面に遷移する？
   }
 }

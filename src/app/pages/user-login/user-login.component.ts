@@ -13,7 +13,6 @@ export class UserLoginComponent implements OnInit {
   constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit() {
-    // ログイン済みならユーザーinfoへ
     this.auth.user.subscribe(user => {
       if (user !== null) {
         this.router.navigate(['/']);

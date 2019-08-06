@@ -10,7 +10,9 @@
     <mat-form-field class="example-full-width">
       <input matInput type="text" placeholder="addr" [(ngModel)]="place.addr">
     </mat-form-field>
-    <a [href]="googleMapLink">地図アプリで見る</a>
+    <a [href]="googleMapLink">
+      <mat-icon>location_on</mat-icon>
+    </a>
   </div>
   <div>
     <mat-form-field class="example-full-width">

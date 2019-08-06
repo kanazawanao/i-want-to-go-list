@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Place } from 'src/app/models/place';
 import { PlaceService } from 'src/app/services/place.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,15 +9,21 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './place-random.component.html',
   styleUrls: ['./place-random.component.scss']
 })
-export class PlaceRandomComponent implements OnInit {
+export class PlaceRandomComponent implements OnInit, OnDestroy {
   placeSearchCondition: Place = new Place();
   results$?: Observable<Place[]>;
   selectedPlace: Place | null = null;
+  subscriptions: Subscription[] = [];
   constructor(private placeService: PlaceService, private auth: AuthService) {
     this.placeSearchCondition.userId = this.auth.userId;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
 
   search() {
     // TODO: 検索中であることを表示できたら嬉しい
@@ -27,5 +33,12 @@ export class PlaceRandomComponent implements OnInit {
 
   onSelect(place: Place) {
     this.selectedPlace = place;
+  }
+
+  random() {
+    const allPlaces$ = this.placeService.searchPlaces(this.placeSearchCondition);
+    allPlaces$.subscribe(a => {
+      this.selectedPlace = a[Math.floor(Math.random() * a.length)];
+    });
   }
 }

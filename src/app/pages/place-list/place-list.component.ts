@@ -13,7 +13,10 @@ export class PlaceListComponent implements OnInit, OnDestroy {
   places$?: Observable<Place[]>;
   selectedPlace: Place | null = null;
   subscriptions: Subscription[] = [];
-  constructor(private placeService: PlaceService, private auth: AuthService) {}
+  constructor(
+    private placeService: PlaceService,
+    private auth: AuthService,
+  ) {}
 
   ngOnInit() {
     this.places$ = this.placeService.searchPlacesByUserId(this.auth.userId);
@@ -25,13 +28,13 @@ export class PlaceListComponent implements OnInit, OnDestroy {
 
   delete(place: Place) {
     this.placeService.deletePlace(place);
-    alert('削除しました。');
+    alert('deleted');
     this.selectedPlace = null;
   }
 
   update(place: Place) {
     this.placeService.updatePlace(place);
-    alert('登録しました。');
+    alert('updated');
   }
 
   onSelect(place: Place) {
