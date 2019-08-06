@@ -3,6 +3,7 @@ import { PlaceService } from 'src/app/services/place.service';
 import { Observable, Subscription } from 'rxjs';
 import { Place } from 'src/app/models/place';
 import { AuthService } from 'src/app/services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-place-list',
@@ -16,6 +17,7 @@ export class PlaceListComponent implements OnInit, OnDestroy {
   constructor(
     private placeService: PlaceService,
     private auth: AuthService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -28,16 +30,22 @@ export class PlaceListComponent implements OnInit, OnDestroy {
 
   delete(place: Place) {
     this.placeService.deletePlace(place);
-    alert('deleted');
+    this.openSnackBar('deleted');
     this.selectedPlace = null;
   }
 
   update(place: Place) {
     this.placeService.updatePlace(place);
-    alert('updated');
+    this.openSnackBar('updated');
   }
 
   onSelect(place: Place) {
     this.selectedPlace = place;
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 }

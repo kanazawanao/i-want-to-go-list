@@ -3,6 +3,7 @@ import { Place } from 'src/app/models/place';
 import { PlaceService } from 'src/app/services/place.service';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-place-random',
@@ -14,7 +15,11 @@ export class PlaceRandomComponent implements OnInit, OnDestroy {
   results$?: Observable<Place[]>;
   selectedPlace: Place | null = null;
   subscriptions: Subscription[] = [];
-  constructor(private placeService: PlaceService, private auth: AuthService) {
+  constructor(
+    private placeService: PlaceService,
+    private auth: AuthService,
+    private _snackBar: MatSnackBar
+  ) {
     this.placeSearchCondition.userId = this.auth.userId;
   }
 
@@ -28,6 +33,7 @@ export class PlaceRandomComponent implements OnInit, OnDestroy {
   search() {
     // TODO: 検索中であることを表示できたら嬉しい
     this.results$ = this.placeService.searchPlaces(this.placeSearchCondition);
+    this.openSnackBar('searched');
     // TODO: 検索結果が０件の場合の処理実装したい
   }
 
@@ -39,6 +45,13 @@ export class PlaceRandomComponent implements OnInit, OnDestroy {
     const allPlaces$ = this.placeService.searchPlaces(this.placeSearchCondition);
     allPlaces$.subscribe(a => {
       this.selectedPlace = a[Math.floor(Math.random() * a.length)];
+    });
+    this.openSnackBar('selected');
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
     });
   }
 }

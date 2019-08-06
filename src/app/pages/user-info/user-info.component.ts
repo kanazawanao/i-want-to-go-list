@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
@@ -9,7 +10,11 @@ import { User } from 'src/app/models/user';
 })
 export class UserInfoComponent implements OnInit {
   user: User = new User();
-  constructor(private auth: AuthService, private userService: UserService) {}
+  constructor(
+    private auth: AuthService,
+    private userService: UserService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.auth.user.subscribe(u => {
@@ -19,6 +24,12 @@ export class UserInfoComponent implements OnInit {
 
   update() {
     this.userService.updateUser(this.user);
-    alert('updated');
+    this.openSnackBar('updated');
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 }
