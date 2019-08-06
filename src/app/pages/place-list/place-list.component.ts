@@ -28,7 +28,8 @@ export class PlaceListComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  delete(place: Place) {
+  delete(event: MouseEvent ,place: Place) {
+    event.stopPropagation();
     this.placeService.deletePlace(place);
     this.openSnackBar('deleted');
     this.selectedPlace = null;

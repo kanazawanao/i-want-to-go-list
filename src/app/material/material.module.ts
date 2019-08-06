@@ -9,6 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatListModule } from '@angular/material/list';
 const modules = [
   MatToolbarModule,
   MatButtonModule,
@@ -19,7 +20,8 @@ const modules = [
   MatCheckboxModule,
   MatInputModule,
   MatExpansionModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatListModule
 ];
 @NgModule({
   imports: [...modules],
