@@ -1,0 +1,22 @@
+<h1>list</h1>
+
+<app-filter [placeSearchCondition]="placeSearchCondition"></app-filter>
+
+<button mat-button type="button" (click)="search()">
+  <mat-icon>search</mat-icon>
+  search
+</button>
+<button mat-button type="button" (click)="random()">
+  <mat-icon>find_replace</mat-icon>
+  random
+</button>
+
+<app-place-list
+  [places$]="places$"
+  (selectPlaceEvent)="select($event)"
+  (deletePlaceEvent)="delete($event)"
+></app-place-list>
+<app-place-detail
+  [place]="selectedPlace"
+  (updatePlaceInfo)="update($event)"
+></app-place-detail>

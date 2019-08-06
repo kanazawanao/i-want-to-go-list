@@ -4,9 +4,8 @@ import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { UserSignupComponent } from './pages/user-signup/user-signup.component';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { AuthGuard } from './guard/auth.guard';
-import { PlaceListComponent } from './pages/place-list/place-list.component';
 import { PlaceRegistComponent } from './pages/place-regist/place-regist.component';
-import { PlaceRandomComponent } from './pages/place-random/place-random.component';
+import { PlaceComponent } from './pages/place/place.component';
 
 const routes: Routes = [
   {
@@ -26,12 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'placeList',
-    component: PlaceListComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'placeRandom',
-    component: PlaceRandomComponent,
+    component: PlaceComponent,
     canActivate: [AuthGuard]
   },
   {

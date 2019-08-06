@@ -22,12 +22,12 @@ import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { PlaceRegistComponent } from './pages/place-regist/place-regist.component';
 import { PlaceListComponent } from './pages/place-list/place-list.component';
 import { PlaceDetailComponent } from './pages/place-detail/place-detail.component';
-import { PlaceRandomComponent } from './pages/place-random/place-random.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SelectPrefecturesComponent } from './parts/select-prefectures/select-prefectures.component';
 import { FilterComponent } from './parts/filter/filter.component';
+import { PlaceComponent } from './pages/place/place.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +40,9 @@ import { FilterComponent } from './parts/filter/filter.component';
     PlaceRegistComponent,
     PlaceListComponent,
     PlaceDetailComponent,
-    PlaceRandomComponent,
     SelectPrefecturesComponent,
-    FilterComponent
+    FilterComponent,
+    PlaceComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

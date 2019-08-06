@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { PlaceService } from 'src/app/services/place.service';
-import { Observable, Subscription } from 'rxjs';
 import { Place } from 'src/app/models/place';
-import { AuthService } from 'src/app/services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-place-list',
@@ -11,37 +9,19 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./place-list.component.scss']
 })
 export class PlaceListComponent implements OnInit {
-  places$?: Observable<Place[]>;
-  selectedPlace: Place | null = null;
-  constructor(
-    private placeService: PlaceService,
-    private auth: AuthService,
-    private _snackBar: MatSnackBar
-  ) {}
+  @Input() places$?: Observable<Place[]>;
+  @Output() selectPlaceEvent: EventEmitter<Place> = new EventEmitter();
+  @Output() deletePlaceEvent: EventEmitter<Place> = new EventEmitter();
+  constructor() {}
 
-  ngOnInit() {
-    this.places$ = this.placeService.searchPlacesByUserId(this.auth.userId);
-  }
+  ngOnInit() {}
 
-  delete(event: MouseEvent ,place: Place) {
+  delete(event: MouseEvent, place: Place) {
     event.stopPropagation();
-    this.placeService.deletePlace(place);
-    this.openSnackBar('deleted');
-    this.selectedPlace = null;
+    this.deletePlaceEvent.emit(place);
   }
 
-  update(place: Place) {
-    this.placeService.updatePlace(place);
-    this.openSnackBar('updated');
-  }
-
-  onSelect(place: Place) {
-    this.selectedPlace = place;
-  }
-
-  openSnackBar(message: string) {
-    this._snackBar.open(message, '', {
-      duration: 2000,
-    });
+  select(place: Place) {
+    this.selectPlaceEvent.emit(place);
   }
 }

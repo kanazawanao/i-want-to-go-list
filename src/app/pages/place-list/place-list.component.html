@@ -1,17 +1,11 @@
-<h1>list</h1>
-
 <mat-list>
   <h3 mat-subheader>Places</h3>
-  <mat-list-item *ngFor="let place of places$ | async"  (click)="onSelect(place)">
+  <mat-list-item *ngFor="let place of places$ | async" (click)="select(place)">
     <mat-icon mat-list-icon>edit_location</mat-icon>
     <h4 mat-line>{{ place.place }}</h4>
-    <p mat-line> {{ place.prefecture }} </p>
-    <button mat-icon-button type="button" (click)="delete()">
-      <mat-icon>delete</mat-icon>      
+    <p mat-line>{{ place.prefecture }}</p>
+    <button mat-icon-button type="button" (click)="delete($event, place)">
+      <mat-icon>delete</mat-icon>
     </button>
   </mat-list-item>
 </mat-list>
-<app-place-detail
-  [place]="selectedPlace"
-  (updatePlaceInfo)="update($event)"
-></app-place-detail>
