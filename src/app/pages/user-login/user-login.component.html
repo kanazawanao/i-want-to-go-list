@@ -10,4 +10,7 @@
     <input matInput type="password" placeholder="password" [(ngModel)]="password">
   </mat-form-field>
 </div>
-<button type="submit" class="button" (click)="login()">Login</button>
+<button mat-button type="button" (click)="login()">
+  <mat-icon>exit_to_app</mat-icon>
+  Login
+</button>

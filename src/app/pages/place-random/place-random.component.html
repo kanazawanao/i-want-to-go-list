@@ -4,8 +4,14 @@
   [placeSearchCondition]="placeSearchCondition">
 </app-filter>
 
-<button type="submit" class="button" (click)="search()">search</button>
-<button type="submit" class="button" (click)="random()">random one</button>
+<button mat-button type="button" (click)="search()">
+  <mat-icon>search</mat-icon>
+  search
+</button>
+<button mat-button type="button" (click)="random()">
+  <mat-icon>find_replace</mat-icon>
+  random
+</button>
 
 <mat-list>
   <h3 mat-subheader>Places</h3>

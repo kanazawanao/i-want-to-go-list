@@ -16,4 +16,8 @@
     <input matInput type="text" placeholder="profile" [(ngModel)]="user.profile">
   </mat-form-field>
 </div>
-<button type="submit" (click)="update()">update</button>
+<!-- ユーザーグループ化機能の追加（グループユーザーは、グループのリストが確認できる） -->
+<button mat-button type="button" (click)="update()">
+  <mat-icon>done</mat-icon>
+  update
+</button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlaceService } from 'src/app/services/place.service';
 import { Observable, Subscription } from 'rxjs';
 import { Place } from 'src/app/models/place';
@@ -10,10 +10,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './place-list.component.html',
   styleUrls: ['./place-list.component.scss']
 })
-export class PlaceListComponent implements OnInit, OnDestroy {
+export class PlaceListComponent implements OnInit {
   places$?: Observable<Place[]>;
   selectedPlace: Place | null = null;
-  subscriptions: Subscription[] = [];
   constructor(
     private placeService: PlaceService,
     private auth: AuthService,
@@ -22,10 +21,6 @@ export class PlaceListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.places$ = this.placeService.searchPlacesByUserId(this.auth.userId);
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
   delete(event: MouseEvent ,place: Place) {

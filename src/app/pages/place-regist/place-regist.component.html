@@ -18,5 +18,8 @@
     <input matInput type="number" placeholder="price" [(ngModel)]="place.price">
   </mat-form-field>
 </div>
-
-<button type="submit" class="button" (click)="regist()">regist</button>
+<!-- ジャンル選択の追加（カフェ、キャンプ、温泉、海、絶景スポットなど） -->
+<button mat-button type="button" (click)="regist()">
+  <mat-icon>done</mat-icon>
+  regist
+</button>

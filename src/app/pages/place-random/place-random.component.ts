@@ -33,6 +33,7 @@ export class PlaceRandomComponent implements OnInit, OnDestroy {
   search() {
     // TODO: 検索中であることを表示できたら嬉しい
     this.results$ = this.placeService.searchPlaces(this.placeSearchCondition);
+    this.selectedPlace = null;
     this.openSnackBar('searched');
     // TODO: 検索結果が０件の場合の処理実装したい
   }
@@ -42,6 +43,7 @@ export class PlaceRandomComponent implements OnInit, OnDestroy {
   }
 
   random() {
+    this.results$ = undefined;
     const allPlaces$ = this.placeService.searchPlaces(this.placeSearchCondition);
     allPlaces$.subscribe(a => {
       this.selectedPlace = a[Math.floor(Math.random() * a.length)];

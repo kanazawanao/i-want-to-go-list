@@ -6,8 +6,8 @@
     <mat-icon mat-list-icon>edit_location</mat-icon>
     <h4 mat-line>{{ place.place }}</h4>
     <p mat-line> {{ place.prefecture }} </p>
-    <button class="delete" title="delete place" (click)="delete($event,place)">
-      x
+    <button mat-icon-button type="button" (click)="delete()">
+      <mat-icon>delete</mat-icon>      
     </button>
   </mat-list-item>
 </mat-list>

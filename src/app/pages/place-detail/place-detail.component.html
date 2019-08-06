@@ -22,5 +22,8 @@
   <div>
     <mat-checkbox [(ngModel)]="place.went">went</mat-checkbox>
   </div>
-  <button type="submit" class="button" (click)="update()">update</button>
+  <button mat-button type="button" (click)="update()">
+    <mat-icon>done</mat-icon>
+    update
+  </button>
 </div>

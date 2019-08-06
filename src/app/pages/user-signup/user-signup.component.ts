@@ -15,8 +15,10 @@ export class UserSignupComponent implements OnInit {
   ngOnInit() {}
 
   signup() {
+    // TODO: 入力内容のチェックを行う。NGだったらエラー表示。
     this.auth.siginUp(this.email, this.password).then(x => {
       this.router.navigate(['/']);
     });
+    // TODO: 登録できなかったらエラーを画面に表示する
   }
 }
