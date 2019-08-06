@@ -1,21 +1,9 @@
 <h1>select</h1>
 <h2>search</h2>
-<mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Filtering
-      </mat-panel-title>
-      <mat-panel-description>
-        input search criteria
-      </mat-panel-description>
-    </mat-expansion-panel-header>
 
-    <app-select-prefectures [place]="placeSearchCondition"></app-select-prefectures>
-
-    <mat-checkbox [(ngModel)]="placeSearchCondition.went">went</mat-checkbox>
-  </mat-expansion-panel>
-</mat-accordion>
+<app-filter
+  [placeSearchCondition]="placeSearchCondition">
+</app-filter>
 
 <button type="submit" class="button" (click)="search()">search</button>
 <button type="submit" class="button" (click)="random()">random one</button>
@@ -25,7 +13,6 @@
     {{ result.place }}
   </li>
 </ul>
-
 
 <app-place-detail
   [place]="selectedPlace"

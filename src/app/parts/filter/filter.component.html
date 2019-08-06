@@ -1,0 +1,14 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Filtering
+      </mat-panel-title>
+      <mat-panel-description>
+        input search criteria
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-select-prefectures [place]="placeSearchCondition"></app-select-prefectures>
+    <mat-checkbox [(ngModel)]="placeSearchCondition.went">went</mat-checkbox>
+  </mat-expansion-panel>
+</mat-accordion>

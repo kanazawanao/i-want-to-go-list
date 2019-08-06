@@ -27,6 +27,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SelectPrefecturesComponent } from './parts/select-prefectures/select-prefectures.component';
+import { FilterComponent } from './parts/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SelectPrefecturesComponent } from './parts/select-prefectures/select-pr
     PlaceListComponent,
     PlaceDetailComponent,
     PlaceRandomComponent,
-    SelectPrefecturesComponent
+    SelectPrefecturesComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
