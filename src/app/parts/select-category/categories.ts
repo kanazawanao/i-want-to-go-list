@@ -16,5 +16,5 @@ export const CATEGORIES: Category[] = [
   { id: 9, name: '湖' },
   { id: 10, name: '海' },
   { id: 11, name: '山' },
-  { id: 11, name: '川' }
+  { id: 12, name: '川' }
 ];

@@ -1,23 +1,26 @@
 <h1>Welcome {{ user.displayName }}</h1>
 
 <h2>User Info</h2>
-<div>
-  <mat-form-field class="example-full-width">
-    <input matInput type="email" placeholder="email" [(ngModel)]="user.email">
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field class="example-full-width">
-    <input matInput type="text" placeholder="name" [(ngModel)]="user.displayName">
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field class="example-full-width">
-    <input matInput type="text" placeholder="profile" [(ngModel)]="user.profile">
-  </mat-form-field>
-</div>
-<!-- ユーザーグループ化機能の追加（グループユーザーは、グループのリストが確認できる） -->
-<button mat-button type="button" (click)="update()">
-  <mat-icon>done</mat-icon>
-  update
-</button>
+
+<form class="form">
+  <div>
+    <mat-form-field class="full-width">
+      <input matInput type="email" placeholder="email" [(ngModel)]="user.email" name="email">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="full-width">
+      <input matInput type="text" placeholder="name" [(ngModel)]="user.displayName" name="displayName">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="full-width">
+      <input matInput type="text" placeholder="profile" [(ngModel)]="user.profile" name="profile">
+    </mat-form-field>
+  </div>
+  <!-- ユーザーグループ化機能の追加（グループユーザーは、グループのリストが確認できる） -->
+  <button mat-button type="button" (click)="update()">
+    <mat-icon>done</mat-icon>
+    update
+  </button>
+</form>

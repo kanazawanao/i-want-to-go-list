@@ -17,7 +17,7 @@ export class PlaceComponent implements OnInit {
   constructor(
     private placeService: PlaceService,
     private auth: AuthService,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {
     this.placeSearchCondition.userId = this.auth.userId;
   }
@@ -35,7 +35,7 @@ export class PlaceComponent implements OnInit {
   }
 
   openSnackBar(message: string) {
-    this._snackBar.open(message, '', {
+    this.snackBar.open(message, '', {
       duration: 2000
     });
   }

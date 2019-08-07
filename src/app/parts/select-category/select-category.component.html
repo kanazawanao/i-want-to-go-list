@@ -1,8 +1,10 @@
-<mat-form-field>
-  <mat-label>category</mat-label>
-  <mat-select [(ngModel)]="place.category">
-    <mat-option *ngFor="let category of categories" [value]="category.name">
-      {{ category.name }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<form class="form">
+  <mat-form-field class="full-width">
+    <mat-label>category</mat-label>
+    <mat-select [(ngModel)]="place.category" name="category">
+      <mat-option *ngFor="let category of categories" [value]="category.name">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

@@ -13,7 +13,7 @@ export class UserInfoComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private userService: UserService,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class UserInfoComponent implements OnInit {
   }
 
   openSnackBar(message: string) {
-    this._snackBar.open(message, '', {
+    this.snackBar.open(message, '', {
       duration: 2000,
     });
   }
