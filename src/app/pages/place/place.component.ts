@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class PlaceComponent implements OnInit {
   placeSearchCondition: Place = new Place();
-  selectedPlace: Place | null = null;
+  selectedPlace?: Place;
   places$?: Observable<Place[]>;
   constructor(
     private placeService: PlaceService,
@@ -31,7 +31,7 @@ export class PlaceComponent implements OnInit {
   delete(place: Place) {
     this.placeService.deletePlace(place);
     this.openSnackBar('deleted');
-    this.selectedPlace = null;
+    this.selectedPlace = undefined;
   }
 
   openSnackBar(message: string) {
@@ -48,7 +48,7 @@ export class PlaceComponent implements OnInit {
   search() {
     // TODO: 検索中であることを表示できたら嬉しい
     this.places$ = this.placeService.searchPlaces(this.placeSearchCondition);
-    this.selectedPlace = null;
+    this.selectedPlace = undefined;
     this.openSnackBar('searched');
     // TODO: 検索結果が０件の場合の処理実装したい
   }
@@ -62,5 +62,10 @@ export class PlaceComponent implements OnInit {
       this.selectedPlace = a[Math.floor(Math.random() * a.length)];
     });
     this.openSnackBar('selected');
+  }
+
+  clear() {
+    this.selectedPlace = undefined;
+    this.places$ = undefined;
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { PlaceService } from 'src/app/services/place.service';
 import { Place } from 'src/app/models/place';
 import { Observable } from 'rxjs';
 

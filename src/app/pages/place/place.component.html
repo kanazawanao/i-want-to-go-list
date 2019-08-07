@@ -10,6 +10,10 @@
   <mat-icon>find_replace</mat-icon>
   random
 </button>
+<button mat-button type="button" (click)="clear()">
+  <mat-icon>clear_all</mat-icon>
+  clear
+</button>
 
 <app-place-list
   [places$]="places$"
