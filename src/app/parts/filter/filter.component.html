@@ -11,8 +11,9 @@
     <app-select-prefectures
       [place]="placeSearchCondition"
     ></app-select-prefectures>
-
     <app-select-category [place]="placeSearchCondition"></app-select-category>
+    <input matInput type="time" placeholder="open" [(ngModel)]="placeSearchCondition.open" name="open"/>
+    <input matInput type="time" placeholder="close" [(ngModel)]="placeSearchCondition.close" name="close"/>
     <mat-checkbox [(ngModel)]="placeSearchCondition.went">went</mat-checkbox>
   </mat-expansion-panel>
 </mat-accordion>
