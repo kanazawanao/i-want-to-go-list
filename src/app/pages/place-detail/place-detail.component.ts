@@ -7,7 +7,7 @@ import { Place } from 'src/app/models/place';
   styleUrls: ['./place-detail.component.scss']
 })
 export class PlaceDetailComponent implements OnInit {
-  @Input() place: Place | null = null;
+  @Input() place!: Place;
   @Input() processName = '';
   @Output() processing: EventEmitter<any> = new EventEmitter();
   get googleMapLink(): string {
@@ -19,7 +19,7 @@ export class PlaceDetailComponent implements OnInit {
 
   ngOnInit() {}
 
-  protected update() {
+  onClick() {
     this.processing.emit(this.place);
   }
 }
