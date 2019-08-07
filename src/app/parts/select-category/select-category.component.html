@@ -1,5 +1,6 @@
 <form class="form">
   <mat-form-field class="full-width">
+    <mat-icon matPrefix>category</mat-icon>
     <mat-label>category</mat-label>
     <mat-select [(ngModel)]="place.category" name="category">
       <mat-option *ngFor="let category of categories" [value]="category.name">

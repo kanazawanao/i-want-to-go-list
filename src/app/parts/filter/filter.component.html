@@ -2,18 +2,45 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Filtering
+        <mat-icon matPrefix>filter_list</mat-icon>
       </mat-panel-title>
       <mat-panel-description>
-        input search criteria
+        filter
       </mat-panel-description>
     </mat-expansion-panel-header>
     <app-select-prefectures
       [place]="placeSearchCondition"
     ></app-select-prefectures>
     <app-select-category [place]="placeSearchCondition"></app-select-category>
-    <input matInput type="time" placeholder="open" [(ngModel)]="placeSearchCondition.open" name="open"/>
-    <input matInput type="time" placeholder="close" [(ngModel)]="placeSearchCondition.close" name="close"/>
+    <table cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field>
+            <mat-icon matPrefix>access_time</mat-icon>
+            <input
+              matInput
+              type="time"
+              placeholder="open"
+              [(ngModel)]="placeSearchCondition.open"
+              name="open"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-icon matPrefix>access_time</mat-icon>
+            <input
+              matInput
+              type="time"
+              placeholder="close"
+              [(ngModel)]="placeSearchCondition.close"
+              name="close"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
     <mat-checkbox [(ngModel)]="placeSearchCondition.went">went</mat-checkbox>
   </mat-expansion-panel>
 </mat-accordion>
