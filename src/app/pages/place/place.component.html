@@ -21,8 +21,11 @@
     (selectPlaceEvent)="select($event)"
     (deletePlaceEvent)="delete($event)"
   ></app-place-list>
-  <app-place-detail
-    [place]="selectedPlace"
-    (updatePlaceInfo)="update($event)"
-  ></app-place-detail>
+  <div *ngIf="selectedPlace">
+    <app-place-detail
+      [place]="selectedPlace"
+      [processName]="processName"
+      (processing)="update($event)"
+    ></app-place-detail>
+  </div>
 </div>

@@ -8,7 +8,8 @@ import { Place } from 'src/app/models/place';
 })
 export class PlaceDetailComponent implements OnInit {
   @Input() place: Place | null = null;
-  @Output() updatePlaceInfo: EventEmitter<any> = new EventEmitter();
+  @Input() processName = '';
+  @Output() processing: EventEmitter<any> = new EventEmitter();
   get googleMapLink(): string {
     return this.place
       ? 'https://www.google.com/maps/search/?api=1&query=' + this.place.addr
@@ -19,6 +20,6 @@ export class PlaceDetailComponent implements OnInit {
   ngOnInit() {}
 
   protected update() {
-    this.updatePlaceInfo.emit(this.place);
+    this.processing.emit(this.place);
   }
 }

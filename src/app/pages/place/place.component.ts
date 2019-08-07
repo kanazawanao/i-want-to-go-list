@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./place.component.scss']
 })
 export class PlaceComponent implements OnInit {
+  processName = 'update';
   placeSearchCondition: Place = new Place();
   selectedPlace?: Place;
   places$?: Observable<Place[]>;

@@ -1,80 +1,77 @@
-<div *ngIf="place">
-  <h2>Details</h2>
-  <form>
+<form>
+  <mat-form-field class="full-width">
+    <mat-icon matPrefix>location_city</mat-icon>
+    <input
+      matInput
+      type="text"
+      placeholder="place"
+      [(ngModel)]="place.place"
+      name="place"
+    />
+  </mat-form-field>
+  <app-select-prefectures [place]="place"></app-select-prefectures>
+  <mat-form-field class="full-width">
+    <mat-icon matPrefix>map</mat-icon>
+    <input
+      matInput
+      type="text"
+      placeholder="addr"
+      [(ngModel)]="place.addr"
+      name="addr"
+    />
+    <a matSuffix [href]="googleMapLink">
+      <mat-icon>location_on</mat-icon>
+    </a>
+  </mat-form-field>
+  <div>
     <mat-form-field class="full-width">
-      <mat-icon matPrefix>location_city</mat-icon>
+      <mat-icon matPrefix>money</mat-icon>
       <input
         matInput
-        type="text"
-        placeholder="place"
-        [(ngModel)]="place.place"
-        name="place"
+        type="number"
+        placeholder="price"
+        [(ngModel)]="place.price"
+        name="price"
       />
     </mat-form-field>
-    <app-select-prefectures [place]="place"></app-select-prefectures>
-    <mat-form-field class="full-width">
-      <mat-icon matPrefix>map</mat-icon>
-      <input
-        matInput
-        type="text"
-        placeholder="addr"
-        [(ngModel)]="place.addr"
-        name="addr"
-      />
-      <a matSuffix [href]="googleMapLink">
-        <mat-icon>location_on</mat-icon>
-      </a>
-    </mat-form-field>
-    <div>
-      <mat-form-field class="full-width">
-        <mat-icon matPrefix>money</mat-icon>
-        <input
-          matInput
-          type="number"
-          placeholder="price"
-          [(ngModel)]="place.price"
-          name="price"
-        />
-      </mat-form-field>
-    </div>
-    <div>
-      <app-select-category [place]="place"></app-select-category>
-    </div>
-    <table cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field>
-            <mat-icon matPrefix>access_time</mat-icon>
-            <input
-              matInput
-              type="time"
-              placeholder="open"
-              [(ngModel)]="place.open"
-              name="open"
-            />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-icon matPrefix>access_time</mat-icon>
-            <input
-              matInput
-              type="time"
-              placeholder="close"
-              [(ngModel)]="place.close"
-              name="close"
-            />
-          </mat-form-field>
-        </td>
-      </tr>
-    </table>
+  </div>
+  <div>
+    <app-select-category [place]="place"></app-select-category>
+  </div>
+  <table cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field>
+          <mat-icon matPrefix>access_time</mat-icon>
+          <input
+            matInput
+            type="time"
+            placeholder="open"
+            [(ngModel)]="place.open"
+            name="open"
+          />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-icon matPrefix>access_time</mat-icon>
+          <input
+            matInput
+            type="time"
+            placeholder="close"
+            [(ngModel)]="place.close"
+            name="close"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
 
-    <div>
-      <mat-checkbox [(ngModel)]="place.went" name="went">went</mat-checkbox>
-    </div>
-    <button mat-button type="button" (click)="update()">
-      <mat-icon>done</mat-icon>
-      update
-    </button>
-  </form>
-</div>
+  <div>
+    <mat-checkbox [(ngModel)]="place.went" name="went">went</mat-checkbox>
+  </div>
+  <button mat-button type="button" (click)="update()">
+    <mat-icon>done</mat-icon>
+    {{ processName }}
+  </button>
+</form>
