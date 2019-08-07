@@ -26,6 +26,7 @@ export class PlaceComponent implements OnInit {
   ngOnInit() {}
 
   select(place: Place) {
+    this.places$ = undefined;
     this.selectedPlace = place;
   }
 

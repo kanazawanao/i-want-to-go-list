@@ -1,11 +1,23 @@
-<mat-list>
-  <h3 mat-subheader>Places</h3>
-  <mat-list-item *ngFor="let place of places$ | async" (click)="select(place)">
-    <mat-icon mat-list-icon>edit_location</mat-icon>
-    <h4 mat-line>{{ place.place }}</h4>
-    <p mat-line>{{ place.prefecture }}</p>
-    <button mat-icon-button type="button" (click)="delete($event, place)">
-      <mat-icon>delete</mat-icon>
-    </button>
-  </mat-list-item>
-</mat-list>
+<mat-accordion class="full-width">
+  <mat-expansion-panel *ngFor="let place of places$ | async">
+    <mat-expansion-panel-header>
+      <button
+        matSuffix
+        mat-icon-button
+        type="button"
+        (click)="delete($event, place)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+      <mat-panel-title>
+        <mat-icon matPrefix>edit_location</mat-icon>
+        {{ place.place }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-place-detail
+      [place]="place"
+      [processName]="processName"
+      (processing)="update($event)"
+    ></app-place-detail>
+  </mat-expansion-panel>
+</mat-accordion>

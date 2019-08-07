@@ -18,9 +18,10 @@
 
   <app-place-list
     [places$]="places$"
-    (selectPlaceEvent)="select($event)"
+    (updatePlaceEvent)="update($event)"
     (deletePlaceEvent)="delete($event)"
   ></app-place-list>
+
   <div *ngIf="selectedPlace">
     <app-place-detail
       [place]="selectedPlace"
