@@ -29,6 +29,7 @@ import { SelectPrefecturesComponent } from './parts/select-prefectures/select-pr
 import { FilterComponent } from './parts/filter/filter.component';
 import { PlaceComponent } from './pages/place/place.component';
 import { SelectCategoryComponent } from './parts/select-category/select-category.component';
+import { BusinessHoursComponent } from './parts/business-hours/business-hours.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SelectCategoryComponent } from './parts/select-category/select-category
     SelectPrefecturesComponent,
     FilterComponent,
     PlaceComponent,
-    SelectCategoryComponent
+    SelectCategoryComponent,
+    BusinessHoursComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

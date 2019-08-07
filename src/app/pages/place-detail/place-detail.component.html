@@ -38,35 +38,7 @@
   <div>
     <app-select-category [place]="place"></app-select-category>
   </div>
-  <table cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field>
-          <mat-icon matPrefix>access_time</mat-icon>
-          <input
-            matInput
-            type="time"
-            placeholder="open"
-            [(ngModel)]="place.open"
-            name="open"
-          />
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-icon matPrefix>access_time</mat-icon>
-          <input
-            matInput
-            type="time"
-            placeholder="close"
-            [(ngModel)]="place.close"
-            name="close"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-
+  <app-business-hours [place]="place"></app-business-hours>
   <div>
     <mat-checkbox [(ngModel)]="place.went" name="went">went</mat-checkbox>
   </div>

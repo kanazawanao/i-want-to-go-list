@@ -12,26 +12,7 @@
       [place]="placeSearchCondition"
     ></app-select-prefectures>
     <app-select-category [place]="placeSearchCondition"></app-select-category>
-    <mat-form-field class="time-form">
-      <mat-icon matPrefix>access_time</mat-icon>
-      <input
-        matInput
-        type="time"
-        placeholder="open"
-        [(ngModel)]="placeSearchCondition.open"
-        name="open"
-      />
-    </mat-form-field>
-    <mat-form-field class="time-form">
-      <mat-icon matPrefix>access_time</mat-icon>
-      <input
-        matInput
-        type="time"
-        placeholder="close"
-        [(ngModel)]="placeSearchCondition.close"
-        name="close"
-      />
-    </mat-form-field>
+    <app-business-hours [place]="placeSearchCondition"></app-business-hours>
     <mat-checkbox [(ngModel)]="placeSearchCondition.went">went</mat-checkbox>
   </mat-expansion-panel>
 </mat-accordion>
