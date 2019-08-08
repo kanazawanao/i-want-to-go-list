@@ -40,26 +40,24 @@ export class PlaceService {
   }
 
   searchPlaces(condition: Place): Observable<Place[]> {
-    return this.collection
-      .valueChanges()
-      .pipe(
-        map(p =>
-          p.filter(
-            i =>
-              (condition.prefecture === '' ||
-                i.prefecture === '' ||
-                i.prefecture === condition.prefecture) &&
-              (condition.category === '' ||
-                i.category === '' ||
-                i.category === condition.category) &&
-              // TODO: 時間の検索方法は見直しが必要。
-              (!condition.open || !i.open || (condition.open <= i.open)) &&
-              (!condition.close || !i.close || (condition.close >= i.close)) &&
-              i.went === condition.went &&
-              i.userId === condition.userId
-          )
+    return this.collection.valueChanges().pipe(
+      map(p =>
+        p.filter(
+          i =>
+            (condition.prefecture === '' ||
+              i.prefecture === '' ||
+              i.prefecture === condition.prefecture) &&
+            (condition.category.length === 0 ||
+              i.category.length === 0 ||
+              (condition.category.find(c => i.category.indexOf(c) !== -1) &&
+                // TODO: 時間の検索方法は見直しが必要。
+                (!condition.open || !i.open || condition.open <= i.open) &&
+                (!condition.close || !i.close || condition.close >= i.close) &&
+                i.went === condition.went &&
+                i.userId === condition.userId))
         )
-      );
+      )
+    );
   }
 
   deletePlace(place: Place) {

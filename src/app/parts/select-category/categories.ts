@@ -4,7 +4,6 @@ export class Category {
 }
 
 export const CATEGORIES: Category[] = [
-  { id: 0, name: '' },
   { id: 1, name: 'カフェ' },
   { id: 2, name: 'キャンプ' },
   { id: 3, name: '温泉' },

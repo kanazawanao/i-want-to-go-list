@@ -44,6 +44,7 @@ export class PlaceComponent implements OnInit {
 
   update(place: Place) {
     this.placeService.updatePlace(place);
+    this.selectedPlace = undefined;
     this.openSnackBar('updated');
   }
 

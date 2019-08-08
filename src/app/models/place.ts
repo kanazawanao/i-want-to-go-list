@@ -6,7 +6,7 @@ export class Place {
   addr = '';
   went = false;
   price = 0;
-  category = '';
+  category: string[] = [];
   open?: Date;
   close?: Date;
 }
