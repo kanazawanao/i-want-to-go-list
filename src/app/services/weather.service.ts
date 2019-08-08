@@ -13,7 +13,7 @@ export class WeatherService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   apiKey = environment.dartskyApiKey;
-  private weatherApiUrl = 'https://api.darksky.net/forecast/ec433e0db67e52ffac1fa8a328e3cb0f/37.8267,-122.4233';
+  private weatherApiUrl = 'https://us-central1-i-want-to-go-list.cloudfunctions.net/helloWorld';
 
   constructor(private http: HttpClient) {}
 
