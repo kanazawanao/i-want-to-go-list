@@ -7,6 +7,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +31,7 @@ import { FilterComponent } from './parts/filter/filter.component';
 import { PlaceComponent } from './pages/place/place.component';
 import { SelectCategoryComponent } from './parts/select-category/select-category.component';
 import { BusinessHoursComponent } from './parts/business-hours/business-hours.component';
+import { WeatherNewsComponent } from './parts/weather-news/weather-news.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { BusinessHoursComponent } from './parts/business-hours/business-hours.co
     FilterComponent,
     PlaceComponent,
     SelectCategoryComponent,
-    BusinessHoursComponent
+    BusinessHoursComponent,
+    WeatherNewsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -56,6 +59,8 @@ import { BusinessHoursComponent } from './parts/business-hours/business-hours.co
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     }),
