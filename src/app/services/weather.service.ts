@@ -12,8 +12,7 @@ export class WeatherService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  apiKey = environment.dartskyApiKey;
-  private weatherApiUrl = 'https://us-central1-i-want-to-go-list.cloudfunctions.net/helloWorld';
+  private weatherApiUrl = environment.weatherNewsUrl;
 
   constructor(private http: HttpClient) {}
 
