@@ -1,5 +1,5 @@
 <h1>Category Settings</h1>
-<div cdkDropList class="list" (cdkDropListDropped)="drop($event)">
+<div cdkDropList class="list form" (cdkDropListDropped)="drop($event)">
   <div class="box" *ngFor="let categoryName of categories.category; let i = index" cdkDrag [cdkDragStartDelay]="200">
     {{categoryName}}
     <button
