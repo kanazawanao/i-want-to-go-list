@@ -6,6 +6,7 @@ import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { AuthGuard } from './guard/auth.guard';
 import { PlaceRegistComponent } from './pages/place-regist/place-regist.component';
 import { PlaceComponent } from './pages/place/place.component';
+import { SettingComponent } from './pages/setting/setting.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
   {
     path: 'placeList',
     component: PlaceComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'setting',
+    component: SettingComponent,
     canActivate: [AuthGuard]
   },
   {

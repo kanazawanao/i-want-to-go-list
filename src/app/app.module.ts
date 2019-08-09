@@ -32,6 +32,7 @@ import { PlaceComponent } from './pages/place/place.component';
 import { SelectCategoryComponent } from './parts/select-category/select-category.component';
 import { BusinessHoursComponent } from './parts/business-hours/business-hours.component';
 import { WeatherNewsComponent } from './parts/weather-news/weather-news.component';
+import { SettingComponent } from './pages/setting/setting.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { WeatherNewsComponent } from './parts/weather-news/weather-news.componen
     PlaceComponent,
     SelectCategoryComponent,
     BusinessHoursComponent,
-    WeatherNewsComponent
+    WeatherNewsComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
