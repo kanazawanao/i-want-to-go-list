@@ -3,8 +3,8 @@
     <mat-icon matPrefix>category</mat-icon>
     <mat-label>category</mat-label>
     <mat-select [(ngModel)]="place.category" name="category" multiple>
-      <mat-option *ngFor="let category of categories" [value]="category.name">
-        {{ category.name }}
+      <mat-option *ngFor="let category of categories.category" [value]="category">
+        {{ category }}
       </mat-option>
     </mat-select>
   </mat-form-field>
