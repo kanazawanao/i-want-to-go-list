@@ -28,8 +28,14 @@ export class SettingComponent implements OnInit, OnDestroy {
   regist() {
     this.categories.category.push(this.category);
     this.categoryService.addCategories(this.categories);
+    this.category = '';
     // this.openSnackBar('registered');
     // TODO: 登録したら一覧画面に遷移する？
+  }
+
+  delete(i: number){
+    this.categories.category.splice(i, 1);
+    this.categoryService.updateCategories(this.categories);
   }
 
   drop(event: CdkDragDrop<string[]>) {
