@@ -1,13 +1,15 @@
 <h1>Login</h1>
 
-<form class="form">
+<form #loginForm="ngForm" class="form">
   <mat-form-field class="full-width">
     <input
       matInput
       type="email"
       placeholder="email"
-      [(ngModel)]="email"
+      [(ngModel)]="emailText"
       name="email"
+      required
+      #email="ngModel"
     />
   </mat-form-field>
   <mat-form-field class="full-width">
@@ -15,11 +17,18 @@
       matInput
       type="password"
       placeholder="password"
-      [(ngModel)]="password"
+      [(ngModel)]="passwordText"
       name="password"
+      required
+      #password="ngModel"
     />
   </mat-form-field>
-  <button mat-button type="button" (click)="login()">
+  <button
+    mat-button
+    type="button"
+    (click)="login()"
+    [disabled]="loginForm.invalid"
+  >
     <mat-icon>exit_to_app</mat-icon>
     Login
   </button>

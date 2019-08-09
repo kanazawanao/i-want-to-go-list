@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/models/category';
 import { Observable, Subscription } from 'rxjs';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-setting',
@@ -12,13 +12,17 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 export class SettingComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   categories$?: Observable<Category | undefined>;
-  categories: Category =  new Category;
-  category: string = '';
-  constructor(private categoryService: CategoryService) { }
+  categories: Category = new Category();
+  categoryText: string = '';
+  constructor(private categoryService: CategoryService) {}
 
   ngOnInit() {
     this.categories$ = this.categoryService.getCategories();
-    this.subscriptions.push(this.categories$.subscribe(c => this.categories = c ? c : new Category));
+    this.subscriptions.push(
+      this.categories$.subscribe(
+        c => (this.categories = c ? c : new Category())
+      )
+    );
   }
 
   ngOnDestroy(): void {
@@ -26,20 +30,24 @@ export class SettingComponent implements OnInit, OnDestroy {
   }
 
   regist() {
-    this.categories.category.push(this.category);
+    this.categories.category.push(this.categoryText);
     this.categoryService.addCategories(this.categories);
-    this.category = '';
+    this.categoryText = '';
     // this.openSnackBar('registered');
     // TODO: 登録したら一覧画面に遷移する？
   }
 
-  delete(i: number){
+  delete(i: number) {
     this.categories.category.splice(i, 1);
     this.categoryService.updateCategories(this.categories);
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.categories.category, event.previousIndex, event.currentIndex);
+    moveItemInArray(
+      this.categories.category,
+      event.previousIndex,
+      event.currentIndex
+    );
     this.categoryService.updateCategories(this.categories);
   }
 }

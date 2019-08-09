@@ -1,6 +1,6 @@
 <h1>Welcome {{ user.displayName }}</h1>
 <h2>User Info</h2>
-<form class="form">
+<form #userForm="ngForm" class="form">
   <mat-form-field class="full-width">
     <input
       matInput
@@ -8,6 +8,8 @@
       placeholder="email"
       [(ngModel)]="user.email"
       name="email"
+      required
+      #email="ngModel"
     />
   </mat-form-field>
   <mat-form-field class="full-width">
@@ -17,6 +19,8 @@
       placeholder="name"
       [(ngModel)]="user.displayName"
       name="displayName"
+      required
+      #displayName="ngModel"
     />
   </mat-form-field>
   <mat-form-field class="full-width">
@@ -26,9 +30,16 @@
       placeholder="profile"
       [(ngModel)]="user.profile"
       name="profile"
+      required
+      #profile="ngModel"
     />
   </mat-form-field>
-  <button mat-button type="button" (click)="update()">
+  <button
+    mat-button
+    type="button"
+    (click)="update()"
+    [disabled]="userForm.invalid"
+  >
     <mat-icon>done</mat-icon>
     update
   </button>

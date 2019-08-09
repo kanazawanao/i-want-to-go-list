@@ -1,4 +1,4 @@
-<form>
+<form #placeForm="ngForm" class="form">
   <mat-form-field class="full-width">
     <mat-icon matPrefix>location_city</mat-icon>
     <input
@@ -7,6 +7,8 @@
       placeholder="place"
       [(ngModel)]="place.place"
       name="place"
+      required
+      #place="ngModel"
     />
   </mat-form-field>
   <app-select-prefectures [place]="place"></app-select-prefectures>
@@ -23,27 +25,28 @@
       <mat-icon>location_on</mat-icon>
     </a>
   </mat-form-field>
-  <div>
-    <mat-form-field class="full-width">
-      <mat-icon matPrefix>money</mat-icon>
-      <input
-        matInput
-        type="number"
-        placeholder="price"
-        [(ngModel)]="place.price"
-        name="price"
-      />
-    </mat-form-field>
-  </div>
-  <div>
-    <app-select-category [place]="place"></app-select-category>
-  </div>
+  <mat-form-field class="full-width">
+    <mat-icon matPrefix>money</mat-icon>
+    <input
+      matInput
+      type="number"
+      placeholder="price"
+      [(ngModel)]="place.price"
+      name="price"
+    />
+  </mat-form-field>
+  <app-select-category [place]="place"></app-select-category>
   <app-business-hours [place]="place"></app-business-hours>
+  <mat-checkbox [(ngModel)]="place.went" name="went">went</mat-checkbox>
   <div>
-    <mat-checkbox [(ngModel)]="place.went" name="went">went</mat-checkbox>
+    <button
+      mat-button
+      type="button"
+      (click)="onClick()"
+      [disabled]="placeForm.invalid"
+    >
+      <mat-icon>done</mat-icon>
+      {{ processName }}
+    </button>
   </div>
-  <button mat-button type="button" (click)="onClick()">
-    <mat-icon>done</mat-icon>
-    {{ processName }}
-  </button>
 </form>
