@@ -5,20 +5,20 @@
       matInput
       type="text"
       placeholder="place"
-      [(ngModel)]="place.place"
+      [(ngModel)]="selectedPlace.place"
       name="place"
       required
       #place="ngModel"
     />
   </mat-form-field>
-  <app-select-prefectures [place]="place"></app-select-prefectures>
+  <app-select-prefectures [place]="selectedPlace"></app-select-prefectures>
   <mat-form-field class="full-width">
     <mat-icon matPrefix>map</mat-icon>
     <input
       matInput
       type="text"
       placeholder="addr"
-      [(ngModel)]="place.addr"
+      [(ngModel)]="selectedPlace.addr"
       name="addr"
     />
     <a matSuffix [href]="googleMapLink">
@@ -31,13 +31,13 @@
       matInput
       type="number"
       placeholder="price"
-      [(ngModel)]="place.price"
+      [(ngModel)]="selectedPlace.price"
       name="price"
     />
   </mat-form-field>
-  <app-select-category [place]="place"></app-select-category>
-  <app-business-hours [place]="place"></app-business-hours>
-  <mat-checkbox [(ngModel)]="place.went" name="went">went</mat-checkbox>
+  <app-select-category [place]="selectedPlace"></app-select-category>
+  <app-business-hours [place]="selectedPlace"></app-business-hours>
+  <mat-checkbox [(ngModel)]="selectedPlace.went" name="went">went</mat-checkbox>
   <div>
     <button
       mat-button

@@ -7,12 +7,13 @@ import { Place } from 'src/app/models/place';
   styleUrls: ['./place-detail.component.scss']
 })
 export class PlaceDetailComponent implements OnInit {
-  @Input() place: Place = new Place();
+  @Input() selectedPlace: Place = new Place();
   @Input() processName = '';
   @Output() processing: EventEmitter<any> = new EventEmitter();
   get googleMapLink(): string {
-    return this.place
-      ? 'https://www.google.com/maps/search/?api=1&query=' + this.place.addr
+    return this.selectedPlace
+      ? 'https://www.google.com/maps/search/?api=1&query=' +
+          this.selectedPlace.addr
       : '';
   }
   constructor() {}
@@ -20,6 +21,6 @@ export class PlaceDetailComponent implements OnInit {
   ngOnInit() {}
 
   onClick() {
-    this.processing.emit(this.place);
+    this.processing.emit(this.selectedPlace);
   }
 }
