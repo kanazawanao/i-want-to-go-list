@@ -49,10 +49,7 @@ export class AuthService {
 
   async login(email: string, password: string) {
     try {
-      await this.afAuth.auth.signInWithEmailAndPassword(
-        email,
-        password
-      );
+      await this.afAuth.auth.signInWithEmailAndPassword(email, password);
     } catch (err) {
       return console.log(err);
       // TODO: エラー処理追加
@@ -72,7 +69,8 @@ export class AuthService {
 
   private async oAuthLogin(provider: firebase.auth.AuthProvider) {
     try {
-      await this.afAuth.auth.signInWithPopup(provider);
+      const credential = await this.afAuth.auth.signInWithPopup(provider);
+      return this.userService.addUser(this.createUser(credential.user));
     } catch (err) {
       return console.log(err);
     }
