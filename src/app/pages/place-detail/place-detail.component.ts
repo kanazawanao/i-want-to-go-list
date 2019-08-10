@@ -12,8 +12,9 @@ export class PlaceDetailComponent implements OnInit {
   @Output() processing: EventEmitter<any> = new EventEmitter();
   get googleMapLink(): string {
     return this.selectedPlace
-      ? 'https://www.google.com/maps/search/?api=1&query=' +
-          this.selectedPlace.addr
+      ? 'https://www.google.com/maps/dir/?api=1&destination=' +
+          this.selectedPlace.addr +
+          '&travelmode=driving'
       : '';
   }
   constructor() {}

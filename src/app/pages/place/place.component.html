@@ -17,8 +17,10 @@
 
   <app-place-list
     [places$]="places$"
+    [destinations]="destinations"
     (updatePlaceEvent)="update($event)"
     (deletePlaceEvent)="delete($event)"
+    (addDestinationEvent)="addDestination($event)"
   ></app-place-list>
 
   <div *ngIf="selectedPlace">
@@ -28,4 +30,7 @@
       (processing)="update($event)"
     ></app-place-detail>
   </div>
+  <a matSuffix [href]="googleMapLinks">
+    <mat-icon>location_on</mat-icon>
+  </a>
 </div>
