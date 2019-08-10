@@ -49,12 +49,12 @@ export class PlaceService {
               i.prefecture === condition.prefecture) &&
             (condition.category.length === 0 ||
               i.category.length === 0 ||
-              (condition.category.find(c => i.category.indexOf(c) !== -1) &&
-                // TODO: 時間の検索方法は見直しが必要。
-                (!condition.open || !i.open || condition.open <= i.open) &&
-                (!condition.close || !i.close || condition.close >= i.close) &&
-                i.went === condition.went &&
-                i.userId === condition.userId))
+              condition.category.find(c => i.category.indexOf(c) !== -1)) &&
+            // TODO: 時間の検索方法は見直しが必要。
+            (!condition.open || !i.open || condition.open <= i.open) &&
+            (!condition.close || !i.close || condition.close >= i.close) &&
+            i.went === condition.went &&
+            i.userId === condition.userId
         )
       )
     );
