@@ -82,7 +82,7 @@ export class PlaceComponent implements OnInit {
   }
 
   createWayoption() {
-    let des: string[] = [];
+    const des: string[] = [];
     let lastPlace: Place = new Place();
     this.destinations.forEach((d, index) => {
       if (index === 0) {

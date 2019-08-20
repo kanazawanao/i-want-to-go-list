@@ -13,7 +13,7 @@ export class SettingComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   categories$?: Observable<Category | undefined>;
   categories: Category = new Category();
-  categoryText: string = '';
+  categoryText = '';
   constructor(private categoryService: CategoryService) {}
 
   ngOnInit() {
