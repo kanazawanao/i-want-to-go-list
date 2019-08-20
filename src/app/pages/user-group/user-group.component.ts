@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserGroupService } from 'src/app/services/firestore/user-group.service';
-import { Observable } from 'rxjs';
-import { UserGroup } from 'src/app/models/user-group';
+import { Observable, Subscription } from 'rxjs';
+import { UserGroup, UserGroups } from 'src/app/models/user-group';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -9,32 +9,44 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   templateUrl: './user-group.component.html',
   styleUrls: ['./user-group.component.scss']
 })
-export class UserGroupComponent implements OnInit {
+export class UserGroupComponent implements OnInit, OnDestroy {
   groupNameText = '';
-  userGroup$?: Observable<UserGroup[] | undefined>;
-  userGroups: UserGroup[] = [];
-  constructor(
-    private userGroupService: UserGroupService
-  ) { }
+  userGroups$?: Observable<UserGroups | undefined>;
+  userGroups: UserGroups = new UserGroups();
+  subscriptions: Subscription[] = [];
+  constructor(private userGroupService: UserGroupService) {}
 
   ngOnInit() {
+    this.userGroups$ = this.userGroupService.getUserGroup();
+    this.subscriptions.push(
+      this.userGroups$.subscribe(u => {
+        this.userGroups = u ? u : new UserGroups();
+        console.log(this.userGroups);
+      })
+    );
   }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
   onClick() {
     const userGroup = new UserGroup();
     userGroup.admin = true;
     userGroup.groupName = this.groupNameText;
-    this.userGroups.push(userGroup);
+    this.userGroups.userGroup.push(userGroup);
     this.userGroupService.addUserGroup(this.userGroups);
+    this.groupNameText = '';
   }
-  
+
   delete(i: number) {
-    this.userGroups.splice(i, 1);
+    this.userGroups.userGroup.splice(i, 1);
     this.userGroupService.updateUserGroup(this.userGroups);
   }
 
   drop(event: CdkDragDrop<UserGroup[]>) {
     moveItemInArray(
-      this.userGroups,
+      this.userGroups.userGroup,
       event.previousIndex,
       event.currentIndex
     );

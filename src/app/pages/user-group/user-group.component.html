@@ -2,7 +2,7 @@
   <h1>userGroup</h1>
   <div
     class="box"
-    *ngFor="let userGroup of userGroups; let i = index"
+    *ngFor="let userGroup of userGroups.userGroup; let i = index"
     cdkDrag
     [cdkDragStartDelay]="200"
   >
@@ -30,7 +30,7 @@
     (click)="onClick()"
     [disabled]="userGroupForm.invalid"
   >
-    <mat-icon>regist</mat-icon>
+    <mat-icon>add</mat-icon>
     regist
   </button>
 </form>

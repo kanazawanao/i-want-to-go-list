@@ -4,7 +4,7 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument
 } from '@angular/fire/firestore';
-import { UserGroup } from 'src/app/models/user-group';
+import { UserGroup, UserGroups } from 'src/app/models/user-group';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 
@@ -12,31 +12,28 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserGroupService {
-  private collection: AngularFirestoreCollection<UserGroup>;
-  private document: AngularFirestoreDocument<UserGroup>;
+  private collection: AngularFirestoreCollection<UserGroups>;
+  private document: AngularFirestoreDocument<UserGroups>;
   private userId: string;
-  constructor(
-    private auth: AuthService,
-    private afStore: AngularFirestore
-    ) {
+  constructor(private auth: AuthService, private afStore: AngularFirestore) {
     this.userId = this.auth.userId;
-    this.collection = this.afStore.collection<UserGroup>('user-group');
-    this.document = this.afStore.doc<UserGroup>(`categories/${this.userId}`);
+    this.collection = this.afStore.collection<UserGroups>('user-group');
+    this.document = this.afStore.doc<UserGroups>(`user-group/${this.userId}`);
   }
 
-  addUserGroup(userGroups: UserGroup[]): void {
+  addUserGroup(userGroups: UserGroups): void {
     this.collection
       .doc(this.userId)
       .set(Object.assign({}, JSON.parse(JSON.stringify(userGroups))));
   }
 
-  updateUserGroup(userGroups: UserGroup[]): void {
+  updateUserGroup(userGroups: UserGroups): void {
     this.collection
       .doc(this.userId)
       .set(Object.assign({}, JSON.parse(JSON.stringify(userGroups))));
   }
 
-  getUserGroup(): Observable<UserGroup | undefined> {
+  getUserGroup(): Observable<UserGroups | undefined> {
     return this.document.valueChanges();
   }
 }
