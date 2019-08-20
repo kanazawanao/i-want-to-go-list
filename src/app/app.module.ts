@@ -17,7 +17,7 @@ import { FooterComponent } from './parts/footer/footer.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { UserSignupComponent } from './pages/user-signup/user-signup.component';
 import { environment } from './../environments/environment';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './services/firestore/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { PlaceRegistComponent } from './pages/place-regist/place-regist.component';
@@ -33,6 +33,7 @@ import { SelectCategoryComponent } from './parts/select-category/select-category
 import { BusinessHoursComponent } from './parts/business-hours/business-hours.component';
 import { WeatherNewsComponent } from './parts/weather-news/weather-news.component';
 import { SettingComponent } from './pages/setting/setting.component';
+import { UserGroupComponent } from './pages/user-group/user-group.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { SettingComponent } from './pages/setting/setting.component';
     SelectCategoryComponent,
     BusinessHoursComponent,
     WeatherNewsComponent,
-    SettingComponent
+    SettingComponent,
+    UserGroupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

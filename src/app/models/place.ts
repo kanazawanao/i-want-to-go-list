@@ -1,6 +1,7 @@
 export class Place {
   id = '';
-  userId = '';
+  uId = '';
+  gId = '';
   place = '';
   prefecture = '';
   addr = '';

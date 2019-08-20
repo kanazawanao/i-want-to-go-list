@@ -7,6 +7,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { PlaceRegistComponent } from './pages/place-regist/place-regist.component';
 import { PlaceComponent } from './pages/place/place.component';
 import { SettingComponent } from './pages/setting/setting.component';
+import { UserGroupComponent } from './pages/user-group/user-group.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
     path: 'setting',
     component: SettingComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'userGroup',
+    component: UserGroupComponent,
     canActivate: [AuthGuard]
   },
   {

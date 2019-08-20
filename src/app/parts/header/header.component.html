@@ -1,5 +1,7 @@
 <mat-toolbar color="primary">
-  <mat-icon>motorcycle</mat-icon>
+  <button mat-button>
+    <mat-icon>motorcycle</mat-icon>
+  </button>
   <div *ngIf="auth.loggedIn">
     <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
@@ -7,13 +9,13 @@
   </div>
   <mat-menu #menu="matMenu">
     <button mat-menu-item>
-      <a mat-button routerLink="placeList" class="header-button">
+      <a mat-button routerLink="placeList">
         <mat-icon>list</mat-icon>
         List
       </a>
     </button>
     <button mat-menu-item>
-      <a mat-button routerLink="placeRegist" class="header-button">
+      <a mat-button routerLink="placeRegist">
         <mat-icon>add_location</mat-icon>
         Add
       </a>
@@ -25,19 +27,19 @@
   <mat-menu #userMenu="matMenu">
     <div *ngIf="auth.loggedIn; else loggedOff">
       <button mat-menu-item>
-        <a mat-button class="header-button" (click)="logout()">
+        <a mat-button (click)="logout()">
           <mat-icon>power_settings_new</mat-icon>
           logout
         </a>
       </button>
       <button mat-menu-item>
-        <a mat-button routerLink="userinfo" class="header-button">
+        <a mat-button routerLink="userinfo">
           <mat-icon>face</mat-icon>
           account
         </a>
       </button>
       <button mat-menu-item>
-        <a mat-button routerLink="setting" class="header-button">
+        <a mat-button routerLink="setting">
           <mat-icon>settings</mat-icon>
           settings
         </a>
@@ -45,17 +47,30 @@
     </div>
     <ng-template #loggedOff>
       <button mat-menu-item>
-        <a mat-button routerLink="login" class="header-button">
+        <a mat-button routerLink="login">
           <mat-icon>exit_to_app</mat-icon>
           login
         </a>
       </button>
       <button mat-menu-item>
-        <a mat-button routerLink="signup" class="header-button">
+        <a mat-button routerLink="signup">
           <mat-icon>person_add</mat-icon>
           signup
         </a>
       </button>
     </ng-template>
+  </mat-menu>
+  <div *ngIf="auth.loggedIn">
+    <button mat-button [matMenuTriggerFor]="group">
+      <mat-icon>group</mat-icon>
+    </button>
+  </div>
+  <mat-menu #group="matMenu">
+    <button mat-menu-item>
+      <a mat-button routerLink="userGroup">
+        <mat-icon>group-add</mat-icon>
+        group
+      </a>
+    </button>
   </mat-menu>
 </mat-toolbar>

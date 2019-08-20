@@ -7,7 +7,7 @@ import {
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { map, take, tap } from 'rxjs/operators';
-import { AuthService } from './../services/auth.service';
+import { AuthService } from '../services/firestore/auth.service';
 @Injectable({
   providedIn: 'root'
 })

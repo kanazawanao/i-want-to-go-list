@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Place } from 'src/app/models/place';
-import { PlaceService } from 'src/app/services/place.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { PlaceService } from 'src/app/services/firestore/place.service';
+import { AuthService } from 'src/app/services/firestore/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -17,7 +17,7 @@ export class PlaceRegistComponent implements OnInit {
     private auth: AuthService,
     private snackBar: MatSnackBar
   ) {
-    this.place.userId = this.auth.userId;
+    this.place.uId = this.auth.userId;
   }
 
   ngOnInit() {}

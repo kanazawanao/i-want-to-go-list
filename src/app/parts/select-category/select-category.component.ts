@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Place } from 'src/app/models/place';
 import { Category } from 'src/app/models/category';
 import { Observable, Subscription } from 'rxjs';
-import { CategoryService } from 'src/app/services/category.service';
+import { CategoryService } from 'src/app/services/firestore/category.service';
 
 @Component({
   selector: 'app-select-category',

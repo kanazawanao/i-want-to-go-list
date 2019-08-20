@@ -3,7 +3,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection
 } from '@angular/fire/firestore';
-import { Place } from '../models/place';
+import { Place } from '../../models/place';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -36,7 +36,7 @@ export class PlaceService {
   searchPlacesByUserId(userId: string): Observable<Place[]> {
     return this.collection
       .valueChanges()
-      .pipe(map(p => p.filter(i => i.userId === userId)));
+      .pipe(map(p => p.filter(i => i.uId === userId)));
   }
 
   searchPlaces(condition: Place): Observable<Place[]> {
@@ -54,7 +54,7 @@ export class PlaceService {
             (!condition.open || !i.open || condition.open <= i.open) &&
             (!condition.close || !i.close || condition.close >= i.close) &&
             i.went === condition.went &&
-            i.userId === condition.userId
+            i.uId === condition.uId
         )
       )
     );

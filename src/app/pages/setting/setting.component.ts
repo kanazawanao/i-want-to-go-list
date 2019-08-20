@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CategoryService } from 'src/app/services/category.service';
+import { CategoryService } from 'src/app/services/firestore/category.service';
 import { Category } from 'src/app/models/category';
 import { Observable, Subscription } from 'rxjs';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
