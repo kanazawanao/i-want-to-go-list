@@ -6,14 +6,12 @@
       </button>
       <mat-panel-title>
         <mat-checkbox
-          name="went"
+          name="destination"
           (click)="addDestinationClick($event, place)"
         ></mat-checkbox>
-      </mat-panel-title>
-      <mat-panel-description>
         <mat-icon matPrefix>edit_location</mat-icon>
         {{ place.place }}
-      </mat-panel-description>
+      </mat-panel-title>
     </mat-expansion-panel-header>
     <app-place-detail
       [selectedPlace]="place"
