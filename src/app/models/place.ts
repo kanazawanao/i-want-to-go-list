@@ -1,7 +1,6 @@
 export class Place {
   id = '';
   uId = '';
-  gId = '';
   place = '';
   prefecture = '';
   addr = '';
