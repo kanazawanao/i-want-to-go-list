@@ -30,6 +30,12 @@ export class UserGroupService {
       .set(Object.assign({}, JSON.parse(JSON.stringify(userGroups))));
   }
 
+  updateUserGroup(userGroups: UserGroup[]): void {
+    this.collection
+      .doc(this.userId)
+      .set(Object.assign({}, JSON.parse(JSON.stringify(userGroups))));
+  }
+
   getUserGroup(): Observable<UserGroup | undefined> {
     return this.document.valueChanges();
   }

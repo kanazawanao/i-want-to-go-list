@@ -1,23 +1,36 @@
-<form #loginForm="ngForm" class="form">
-    <h1>login</h1>
-    <mat-form-field class="full-width">
-      <input
-        matInput
-        type="text"
-        placeholder="group name"
-        [(ngModel)]="groupNameText"
-        name="groupName"
-        required
-        #groupName="ngModel"
-      />
-    </mat-form-field>
-    <button
-      mat-button
-      type="button"
-      (click)="onClick()"
-      [disabled]="loginForm.invalid"
-    >
-      <mat-icon>regist</mat-icon>
-      regist
+<div cdkDropList class="list form" (cdkDropListDropped)="drop($event)">
+  <h1>userGroup</h1>
+  <div
+    class="box"
+    *ngFor="let userGroup of userGroups; let i = index"
+    cdkDrag
+    [cdkDragStartDelay]="200"
+  >
+    {{ userGroup.groupName }}
+    <button matSuffix mat-icon-button type="button" (click)="delete(i)">
+      <mat-icon>delete</mat-icon>
     </button>
-  </form>
+  </div>
+</div>
+<form #userGroupForm="ngForm" class="form">
+  <mat-form-field class="full-width">
+    <input
+      matInput
+      type="text"
+      placeholder="group name"
+      [(ngModel)]="groupNameText"
+      name="groupName"
+      required
+      #groupName="ngModel"
+    />
+  </mat-form-field>
+  <button
+    mat-button
+    type="button"
+    (click)="onClick()"
+    [disabled]="userGroupForm.invalid"
+  >
+    <mat-icon>regist</mat-icon>
+    regist
+  </button>
+</form>
