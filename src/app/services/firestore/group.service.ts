@@ -8,15 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class GroupService {
   private collection: AngularFirestoreCollection<Group>;
-  private userId: string;
   constructor(
-    private afStore: AngularFirestore,
-    private auth: AuthService
+    private afStore: AngularFirestore
   ) {
-    this.userId = this.auth.userId;
     this.collection = this.afStore.collection<Group>('group');
   }
-  
+
   addGroup(group: Group): string {
     const id = this.afStore.createId();
     group.id = id;
