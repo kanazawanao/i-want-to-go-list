@@ -34,6 +34,7 @@ import { BusinessHoursComponent } from './parts/business-hours/business-hours.co
 import { WeatherNewsComponent } from './parts/weather-news/weather-news.component';
 import { SettingComponent } from './pages/setting/setting.component';
 import { UserGroupComponent } from './pages/user-group/user-group.component';
+import { SelectGroupComponent } from './parts/select-group/select-group.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { UserGroupComponent } from './pages/user-group/user-group.component';
     BusinessHoursComponent,
     WeatherNewsComponent,
     SettingComponent,
-    UserGroupComponent
+    UserGroupComponent,
+    SelectGroupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -1,0 +1,9 @@
+<mat-form-field class="full-width">
+  <mat-icon matPrefix>group</mat-icon>
+  <mat-label>userGroup</mat-label>
+  <mat-select [(ngModel)]="place.userGroup" name="userGroup">
+    <mat-option *ngFor="let userGroup of userGroups.userGroup" [value]="userGroup">
+      {{ userGroup.groupName }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

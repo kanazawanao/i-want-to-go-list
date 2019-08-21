@@ -11,6 +11,9 @@
     <app-select-prefectures
       [place]="placeSearchCondition"
     ></app-select-prefectures>
+    <app-select-group
+      [place]="placeSearchCondition"
+    ></app-select-group>
     <app-select-category [place]="placeSearchCondition"></app-select-category>
     <app-business-hours [place]="placeSearchCondition"></app-business-hours>
     <mat-checkbox [(ngModel)]="placeSearchCondition.went">went</mat-checkbox>

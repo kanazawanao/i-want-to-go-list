@@ -38,7 +38,7 @@ export class UserGroupComponent implements OnInit, OnDestroy {
   regist() {
     const group = new Group();
     group.groupName = this.groupNameText;
-    const id = this.groupService.addGroup(group)
+    const id = this.groupService.addGroup(group);
     const userGroup = new UserGroup();
     userGroup.admin = true;
     userGroup.groupName = this.groupNameText;
