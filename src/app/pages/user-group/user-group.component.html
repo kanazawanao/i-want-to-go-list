@@ -6,7 +6,7 @@
     cdkDrag
     [cdkDragStartDelay]="200"
   >
-    {{ userGroup.groupName }}
+    name: {{ userGroup.groupName }}
     <button matSuffix mat-icon-button type="button" (click)="delete(i)">
       <mat-icon>delete</mat-icon>
     </button>
@@ -27,7 +27,7 @@
   <button
     mat-button
     type="button"
-    (click)="onClick()"
+    (click)="regist()"
     [disabled]="userGroupForm.invalid"
   >
     <mat-icon>add</mat-icon>

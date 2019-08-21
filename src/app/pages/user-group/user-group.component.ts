@@ -3,6 +3,9 @@ import { UserGroupService } from 'src/app/services/firestore/user-group.service'
 import { Observable, Subscription } from 'rxjs';
 import { UserGroup, UserGroups } from 'src/app/models/user-group';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { GroupService } from 'src/app/services/firestore/group.service';
+import { Group } from 'src/app/models/group';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-group',
@@ -14,14 +17,16 @@ export class UserGroupComponent implements OnInit, OnDestroy {
   userGroups$?: Observable<UserGroups | undefined>;
   userGroups: UserGroups = new UserGroups();
   subscriptions: Subscription[] = [];
-  constructor(private userGroupService: UserGroupService) {}
+  constructor(
+    private userGroupService: UserGroupService,
+    private groupService: GroupService
+  ) {}
 
   ngOnInit() {
     this.userGroups$ = this.userGroupService.getUserGroup();
     this.subscriptions.push(
       this.userGroups$.subscribe(u => {
         this.userGroups = u ? u : new UserGroups();
-        console.log(this.userGroups);
       })
     );
   }
@@ -30,16 +35,22 @@ export class UserGroupComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  onClick() {
+  regist() {
+    const group = new Group();
+    group.groupName = this.groupNameText;
+    const id = this.groupService.addGroup(group)
     const userGroup = new UserGroup();
     userGroup.admin = true;
     userGroup.groupName = this.groupNameText;
+    userGroup.id = id;
     this.userGroups.userGroup.push(userGroup);
     this.userGroupService.addUserGroup(this.userGroups);
     this.groupNameText = '';
   }
 
   delete(i: number) {
+    const id = this.userGroups.userGroup[i].id;
+    this.groupService.deleteGroup(id);
     this.userGroups.userGroup.splice(i, 1);
     this.userGroupService.updateUserGroup(this.userGroups);
   }
