@@ -54,7 +54,9 @@ export class PlaceService {
             (!condition.open || !i.open || condition.open <= i.open) &&
             (!condition.close || !i.close || condition.close >= i.close) &&
             i.went === condition.went &&
-            i.uId === condition.uId
+            (condition.gid == null || condition.gid === ''
+              ? i.uId === condition.uId
+              : condition.gid === i.gid)
         )
       )
     );

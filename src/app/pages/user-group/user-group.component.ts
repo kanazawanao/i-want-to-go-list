@@ -5,7 +5,6 @@ import { UserGroup, UserGroups } from 'src/app/models/user-group';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { GroupService } from 'src/app/services/firestore/group.service';
 import { Group } from 'src/app/models/group';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-group',

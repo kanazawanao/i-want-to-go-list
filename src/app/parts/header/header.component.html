@@ -44,6 +44,12 @@
           settings
         </a>
       </button>
+      <button mat-menu-item>
+        <a mat-button routerLink="userGroup">
+          <mat-icon>group_add</mat-icon>
+          group
+        </a>
+      </button>
     </div>
     <ng-template #loggedOff>
       <button mat-menu-item>
@@ -59,18 +65,5 @@
         </a>
       </button>
     </ng-template>
-  </mat-menu>
-  <div *ngIf="auth.loggedIn">
-    <button mat-button [matMenuTriggerFor]="group">
-      <mat-icon>group</mat-icon>
-    </button>
-  </div>
-  <mat-menu #group="matMenu">
-    <button mat-menu-item>
-      <a mat-button routerLink="userGroup">
-        <mat-icon>group_add</mat-icon>
-        group
-      </a>
-    </button>
   </mat-menu>
 </mat-toolbar>

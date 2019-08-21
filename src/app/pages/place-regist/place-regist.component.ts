@@ -3,6 +3,7 @@ import { Place } from 'src/app/models/place';
 import { PlaceService } from 'src/app/services/firestore/place.service';
 import { AuthService } from 'src/app/services/firestore/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-place-regist',
@@ -13,6 +14,7 @@ export class PlaceRegistComponent implements OnInit {
   processName = 'regist';
   place: Place = new Place();
   constructor(
+    private router: Router,
     private placeService: PlaceService,
     private auth: AuthService,
     private snackBar: MatSnackBar
@@ -25,7 +27,7 @@ export class PlaceRegistComponent implements OnInit {
   regist(place: Place) {
     this.placeService.addPlace(place);
     this.openSnackBar('registered');
-    // TODO: 登録したら一覧画面に遷移する？
+    this.router.navigate(['placeList']);
   }
 
   openSnackBar(message: string) {
