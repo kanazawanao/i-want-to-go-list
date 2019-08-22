@@ -34,7 +34,7 @@ export class UserGroupComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  regist() {
+  regist(): void {
     const group = new Group();
     group.groupName = this.groupNameText;
     const id = this.groupService.addGroup(group);
@@ -47,14 +47,14 @@ export class UserGroupComponent implements OnInit, OnDestroy {
     this.groupNameText = '';
   }
 
-  delete(i: number) {
+  delete(i: number): void {
     const id = this.userGroups.userGroup[i].id;
     this.groupService.deleteGroup(id);
     this.userGroups.userGroup.splice(i, 1);
     this.userGroupService.updateUserGroup(this.userGroups);
   }
 
-  drop(event: CdkDragDrop<UserGroup[]>) {
+  drop(event: CdkDragDrop<UserGroup[]>): void {
     moveItemInArray(
       this.userGroups.userGroup,
       event.previousIndex,

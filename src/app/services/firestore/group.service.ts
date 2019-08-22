@@ -26,7 +26,7 @@ export class GroupService {
     this.collection.doc(id).delete();
   }
 
-  getGroup(id: string): Observable<Group | undefined> {
+  getGroupById(id: string): Observable<Group | undefined> {
     return this.afStore.doc<Group>(`group/${id}`).valueChanges();
   }
 }

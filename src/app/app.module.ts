@@ -35,6 +35,7 @@ import { WeatherNewsComponent } from './parts/weather-news/weather-news.componen
 import { SettingComponent } from './pages/setting/setting.component';
 import { UserGroupComponent } from './pages/user-group/user-group.component';
 import { SelectGroupComponent } from './parts/select-group/select-group.component';
+import { UserGroupJoinComponent } from './pages/user-group-join/user-group-join.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { SelectGroupComponent } from './parts/select-group/select-group.componen
     WeatherNewsComponent,
     SettingComponent,
     UserGroupComponent,
-    SelectGroupComponent
+    SelectGroupComponent,
+    UserGroupJoinComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

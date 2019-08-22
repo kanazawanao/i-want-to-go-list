@@ -8,6 +8,7 @@ import { PlaceRegistComponent } from './pages/place-regist/place-regist.componen
 import { PlaceComponent } from './pages/place/place.component';
 import { SettingComponent } from './pages/setting/setting.component';
 import { UserGroupComponent } from './pages/user-group/user-group.component';
+import { UserGroupJoinComponent } from './pages/user-group-join/user-group-join.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,11 @@ const routes: Routes = [
   {
     path: 'userGroup',
     component: UserGroupComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'userGroupJoin',
+    component: UserGroupJoinComponent,
     canActivate: [AuthGuard]
   },
   {

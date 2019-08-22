@@ -1,15 +1,22 @@
 <div cdkDropList class="list form" (cdkDropListDropped)="drop($event)">
   <h1>userGroup</h1>
   <div
-    class="box"
     *ngFor="let userGroup of userGroups.userGroup; let i = index"
     cdkDrag
-    [cdkDragStartDelay]="200"
-  >
-    name: {{ userGroup.groupName }}
-    <button matSuffix mat-icon-button type="button" (click)="delete(i)">
-      <mat-icon>delete</mat-icon>
-    </button>
+    [cdkDragStartDelay]="200">
+    <mat-card>
+      <mat-card-title>
+        {{ userGroup.groupName }}
+      </mat-card-title>
+      <mat-card-content *ngIf="userGroup.admin">
+        id: {{ userGroup.id }}
+      </mat-card-content>
+      <mat-card-actions>
+        <button matSuffix mat-icon-button type="button" (click)="delete(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>
 <form #userGroupForm="ngForm" class="form">
