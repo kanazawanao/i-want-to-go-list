@@ -4,7 +4,7 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument
 } from '@angular/fire/firestore';
-import { UserGroup, UserGroups } from 'src/app/models/user-group';
+import { UserGroups } from 'src/app/models/user-group';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 
@@ -15,7 +15,10 @@ export class UserGroupService {
   private collection: AngularFirestoreCollection<UserGroups>;
   private document: AngularFirestoreDocument<UserGroups>;
   private userId: string;
-  constructor(private auth: AuthService, private afStore: AngularFirestore) {
+  constructor(
+    private auth: AuthService,
+    private afStore: AngularFirestore
+  ) {
     this.userId = this.auth.userId;
     this.collection = this.afStore.collection<UserGroups>('user-group');
     this.document = this.afStore.doc<UserGroups>(`user-group/${this.userId}`);

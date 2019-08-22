@@ -3,6 +3,7 @@ import { GroupService } from 'src/app/services/firestore/group.service';
 import { UserGroup, UserGroups } from 'src/app/models/user-group';
 import { Observable, Subscription } from 'rxjs';
 import { UserGroupService } from 'src/app/services/firestore/user-group.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-group-join',
@@ -17,6 +18,7 @@ export class UserGroupJoinComponent implements OnInit, OnDestroy {
   constructor(
     private groupService: GroupService,
     private userGroupService: UserGroupService,
+    private snackBar: MatSnackBar
     ) {}
 
   ngOnInit() {
@@ -42,8 +44,14 @@ export class UserGroupJoinComponent implements OnInit, OnDestroy {
         this.userGroups.userGroup.push(userGroup);
         this.userGroupService.addUserGroup(this.userGroups);
       } else {
-        // TODO: 存在しないグループIDエラー
+        this.openSnackBar('グループが存在しません！！', 'error')
       }
     }));
+  }
+  
+  openSnackBar(message: string, action: string = '') {
+    this.snackBar.open(message, action, {
+      duration: 2000
+    });
   }
 }
