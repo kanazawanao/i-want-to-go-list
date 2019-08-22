@@ -10,6 +10,13 @@
       </mat-card-title>
       <mat-card-content *ngIf="userGroup.admin">
         id: {{ userGroup.id }}
+        <button
+          mat-icon-button
+          type="button"
+          matTooltip="Copy"
+          (click)="copy(userGroup.id)">
+          <mat-icon>content_copy</mat-icon>
+        </button>
       </mat-card-content>
       <mat-card-actions>
         <button matSuffix mat-icon-button type="button" (click)="delete(i)">

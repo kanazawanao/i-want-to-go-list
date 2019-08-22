@@ -44,11 +44,11 @@ export class UserGroupJoinComponent implements OnInit, OnDestroy {
         this.userGroups.userGroup.push(userGroup);
         this.userGroupService.addUserGroup(this.userGroups);
       } else {
-        this.openSnackBar('グループが存在しません！！', 'error')
+        this.openSnackBar('グループが存在しません！！', 'error');
       }
     }));
   }
-  
+
   openSnackBar(message: string, action: string = '') {
     this.snackBar.open(message, action, {
       duration: 2000

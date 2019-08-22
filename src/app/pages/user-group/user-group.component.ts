@@ -5,6 +5,7 @@ import { UserGroup, UserGroups } from 'src/app/models/user-group';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { GroupService } from 'src/app/services/firestore/group.service';
 import { Group } from 'src/app/models/group';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-group',
@@ -18,7 +19,8 @@ export class UserGroupComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   constructor(
     private userGroupService: UserGroupService,
-    private groupService: GroupService
+    private groupService: GroupService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -61,5 +63,26 @@ export class UserGroupComponent implements OnInit, OnDestroy {
       event.currentIndex
     );
     this.userGroupService.updateUserGroup(this.userGroups);
+  }
+
+  copy(id: string) {
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = id;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    this.openSnackBar('copied');
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 2000
+    });
   }
 }
