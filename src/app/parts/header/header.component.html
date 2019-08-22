@@ -21,6 +21,31 @@
       </a>
     </button>
   </mat-menu>
+  <div *ngIf="auth.loggedIn">
+    <button mat-button [matMenuTriggerFor]="setting">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </div>
+  <mat-menu #setting="matMenu">
+    <button mat-menu-item>
+      <a mat-button routerLink="setting">
+        <mat-icon>category</mat-icon>
+        category
+      </a>
+    </button>
+    <button mat-menu-item>
+      <a mat-button routerLink="userGroup">
+        <mat-icon>group</mat-icon>
+        group
+      </a>
+    </button>
+    <button mat-menu-item>
+      <a mat-button routerLink="userGroupJoin">
+        <mat-icon>group_add</mat-icon>
+        join group
+      </a>
+    </button>
+  </mat-menu>
   <button mat-button [matMenuTriggerFor]="userMenu">
     <mat-icon>account_circle</mat-icon>
   </button>
@@ -36,24 +61,6 @@
         <a mat-button routerLink="userinfo">
           <mat-icon>face</mat-icon>
           account
-        </a>
-      </button>
-      <button mat-menu-item>
-        <a mat-button routerLink="setting">
-          <mat-icon>settings</mat-icon>
-          settings
-        </a>
-      </button>
-      <button mat-menu-item>
-        <a mat-button routerLink="userGroup">
-          <mat-icon>group</mat-icon>
-          group
-        </a>
-      </button>
-      <button mat-menu-item>
-        <a mat-button routerLink="userGroupJoin">
-          <mat-icon>group_add</mat-icon>
-          join group
         </a>
       </button>
     </div>
