@@ -65,17 +65,19 @@ export class UserGroupComponent implements OnInit, OnDestroy {
     this.userGroupService.updateUserGroup(this.userGroups);
   }
 
-  copy(id: string) {
+  copyToClipboard(id: string) {
     const selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
     selBox.value = id;
+    selBox.selectionStart = 0;
+    selBox.selectionEnd = selBox.value.length;
+    var s = selBox.style;
+    s.position = 'fixed';
+    s.left = '-100%';
+    s.fontSize = '16px';
     document.body.appendChild(selBox);
     selBox.focus();
-    selBox.select();
     document.execCommand('copy');
+    selBox.blur();
     document.body.removeChild(selBox);
     this.openSnackBar('copied');
   }
