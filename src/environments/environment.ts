@@ -12,7 +12,9 @@ export const environment = {
     storageBucket: "",
     messagingSenderId: "<messaging-sender-id>",
     appId: "<app-id>"
-  }
+  },
+  dartskyApiKey: '<dark-sky-api-key>',
+  weatherNewsUrl: '<weather-news-url>'
 };
 
 /*
