@@ -70,7 +70,7 @@ export class UserGroupComponent implements OnInit, OnDestroy {
     selBox.value = id;
     selBox.selectionStart = 0;
     selBox.selectionEnd = selBox.value.length;
-    var s = selBox.style;
+    const s = selBox.style;
     s.position = 'fixed';
     s.left = '-100%';
     s.fontSize = '16px';
