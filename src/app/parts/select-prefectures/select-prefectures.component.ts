@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Prefecture, PREFECTURES } from './prefecture';
+import { PREFECTURES, Aria } from './prefecture';
 import { Place } from 'src/app/models/place';
 
 @Component({
@@ -9,7 +9,7 @@ import { Place } from 'src/app/models/place';
 })
 export class SelectPrefecturesComponent implements OnInit {
   @Input() place: Place = new Place();
-  prefectures: Prefecture[] = PREFECTURES;
+  ariaGroups: Aria[] = PREFECTURES;
   constructor() {}
 
   ngOnInit() {}
