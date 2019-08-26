@@ -47,7 +47,7 @@ export class AuthService {
     }
   }
 
-  async login(email: string, password: string) {
+  async signIn(email: string, password: string) {
     try {
       await this.afAuth.auth.signInWithEmailAndPassword(email, password);
     } catch (err) {
@@ -56,18 +56,18 @@ export class AuthService {
     }
   }
 
-  googleLogin() {
+  googleSignIn() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    return this.oAuthLogin(provider);
+    return this.oAuthSignIn(provider);
   }
 
-  logout() {
+  signOut() {
     this.afAuth.auth.signOut().then(() => {
       this.router.navigate(['/login']);
     });
   }
 
-  private async oAuthLogin(provider: firebase.auth.AuthProvider) {
+  private async oAuthSignIn(provider: firebase.auth.AuthProvider) {
     try {
       const credential = await this.afAuth.auth.signInWithPopup(provider);
       return this.userService.addUser(this.createUser(credential.user));

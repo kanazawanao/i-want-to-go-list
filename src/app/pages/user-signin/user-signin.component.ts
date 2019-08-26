@@ -20,14 +20,14 @@ export class UserSigninComponent implements OnInit {
     });
   }
 
-  signin() {
-    this.auth.login(this.emailText, this.passwordText).then(() => {
+  signIn() {
+    this.auth.signIn(this.emailText, this.passwordText).then(() => {
       this.router.navigate(['/']);
     });
   }
 
-  googleSignin() {
-    this.auth.googleLogin().then(() => {
+  googleSignIn() {
+    this.auth.googleSignIn().then(() => {
       this.router.navigate(['/']);
     });
   }

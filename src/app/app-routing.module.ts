@@ -13,11 +13,11 @@ import { UserGroupJoinComponent } from './pages/setting/user-group-join/user-gro
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/userinfo',
+    redirectTo: '/userInfo',
     pathMatch: 'full'
   },
   {
-    path: 'userinfo',
+    path: 'userInfo',
     component: UserInfoComponent,
     canActivate: [AuthGuard]
   },
@@ -47,11 +47,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'login',
+    path: 'signIn',
     component: UserSigninComponent
   },
   {
-    path: 'signup',
+    path: 'signUp',
     component: UserSignupComponent
   }
 ];
