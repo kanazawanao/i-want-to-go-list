@@ -1,5 +1,5 @@
-<form #loginForm="ngForm" class="form">
-  <h1>login</h1>
+<form #signinForm="ngForm" class="form">
+  <h1>sign in</h1>
   <mat-form-field class="full-width">
     <input
       matInput
@@ -25,14 +25,14 @@
   <button
     mat-button
     type="button"
-    (click)="login()"
-    [disabled]="loginForm.invalid"
+    (click)="signin()"
+    [disabled]="signinForm.invalid"
   >
     <mat-icon>exit_to_app</mat-icon>
-    Login
+    sign in
   </button>
-  <button mat-button type="button" (click)="googleLogin()">
+  <button mat-button type="button" (click)="googleSignin()">
     <mat-icon>exit_to_app</mat-icon>
-    Google Login
+    Google sign in
   </button>
 </form>

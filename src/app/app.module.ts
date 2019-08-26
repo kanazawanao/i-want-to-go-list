@@ -14,15 +14,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './parts/header/header.component';
 import { FooterComponent } from './parts/footer/footer.component';
-import { UserLoginComponent } from './pages/user-login/user-login.component';
+import { UserSigninComponent } from './pages/user-signin/user-signin.component';
 import { UserSignupComponent } from './pages/user-signup/user-signup.component';
 import { environment } from './../environments/environment';
 import { AuthService } from './services/firestore/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
-import { PlaceRegistComponent } from './pages/place-regist/place-regist.component';
-import { PlaceListComponent } from './pages/place-list/place-list.component';
-import { PlaceDetailComponent } from './pages/place-detail/place-detail.component';
+import { PlaceRegistComponent } from './pages/place/place-regist/place-regist.component';
+import { PlaceListComponent } from './pages/place/place-list/place-list.component';
+import { PlaceDetailComponent } from './pages/place/place-detail/place-detail.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -32,17 +32,17 @@ import { PlaceComponent } from './pages/place/place.component';
 import { SelectCategoryComponent } from './parts/select-category/select-category.component';
 import { BusinessHoursComponent } from './parts/business-hours/business-hours.component';
 import { WeatherNewsComponent } from './parts/weather-news/weather-news.component';
-import { SettingComponent } from './pages/setting/setting.component';
-import { UserGroupComponent } from './pages/user-group/user-group.component';
+import { CategoryComponent } from './pages/setting/category/category.component';
+import { UserGroupComponent } from './pages/setting/user-group/user-group.component';
 import { SelectGroupComponent } from './parts/select-group/select-group.component';
-import { UserGroupJoinComponent } from './pages/user-group-join/user-group-join.component';
+import { UserGroupJoinComponent } from './pages/setting/user-group-join/user-group-join.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    UserLoginComponent,
+    UserSigninComponent,
     UserSignupComponent,
     UserInfoComponent,
     PlaceRegistComponent,
@@ -54,10 +54,10 @@ import { UserGroupJoinComponent } from './pages/user-group-join/user-group-join.
     SelectCategoryComponent,
     BusinessHoursComponent,
     WeatherNewsComponent,
-    SettingComponent,
+    CategoryComponent,
     UserGroupComponent,
     SelectGroupComponent,
-    UserGroupJoinComponent
+    UserGroupJoinComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

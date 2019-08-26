@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserLoginComponent } from './pages/user-login/user-login.component';
+import { UserSigninComponent } from './pages/user-signin/user-signin.component';
 import { UserSignupComponent } from './pages/user-signup/user-signup.component';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { AuthGuard } from './guard/auth.guard';
-import { PlaceRegistComponent } from './pages/place-regist/place-regist.component';
+import { PlaceRegistComponent } from './pages/place/place-regist/place-regist.component';
 import { PlaceComponent } from './pages/place/place.component';
-import { SettingComponent } from './pages/setting/setting.component';
-import { UserGroupComponent } from './pages/user-group/user-group.component';
-import { UserGroupJoinComponent } from './pages/user-group-join/user-group-join.component';
+import { CategoryComponent } from './pages/setting/category/category.component';
+import { UserGroupComponent } from './pages/setting/user-group/user-group.component';
+import { UserGroupJoinComponent } from './pages/setting/user-group-join/user-group-join.component';
 
 const routes: Routes = [
   {
@@ -32,8 +32,8 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'setting',
-    component: SettingComponent,
+    path: 'category',
+    component: CategoryComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -48,7 +48,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: UserLoginComponent
+    component: UserSigninComponent
   },
   {
     path: 'signup',

@@ -5,11 +5,11 @@ import { Observable, Subscription } from 'rxjs';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'app-setting',
-  templateUrl: './setting.component.html',
-  styleUrls: ['./setting.component.scss']
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.scss']
 })
-export class SettingComponent implements OnInit, OnDestroy {
+export class CategoryComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   categories$?: Observable<Category | undefined>;
   categories: Category = new Category();
