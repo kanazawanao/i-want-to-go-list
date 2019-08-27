@@ -52,13 +52,13 @@
   <mat-menu #userMenu="matMenu">
     <div *ngIf="auth.loggedIn; else loggedOff">
       <button mat-menu-item>
-        <a mat-button (click)="logout()">
+        <a mat-button (click)="signOut()">
           <mat-icon>power_settings_new</mat-icon>
           logout
         </a>
       </button>
       <button mat-menu-item>
-        <a mat-button routerLink="userinfo">
+        <a mat-button routerLink="userInfo">
           <mat-icon>face</mat-icon>
           account
         </a>
@@ -66,13 +66,13 @@
     </div>
     <ng-template #loggedOff>
       <button mat-menu-item>
-        <a mat-button routerLink="login">
+        <a mat-button routerLink="signIn">
           <mat-icon>exit_to_app</mat-icon>
           sign in
         </a>
       </button>
       <button mat-menu-item>
-        <a mat-button routerLink="signup">
+        <a mat-button routerLink="signUp">
           <mat-icon>person_add</mat-icon>
           sign up
         </a>
