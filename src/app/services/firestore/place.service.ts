@@ -47,7 +47,7 @@ export class PlaceService {
           i =>
             (prefectures.length === 0 ||
               i.prefecture === '' ||
-              prefectures.find(p => i.prefecture.indexOf(p.name) !== -1)) &&
+              prefectures.find(pre => i.prefecture.indexOf(pre.name) !== -1)) &&
             (condition.category.length === 0 ||
               i.category.length === 0 ||
               condition.category.find(c => i.category.indexOf(c) !== -1)) &&

@@ -9,17 +9,17 @@ import { Place } from 'src/app/models/place';
 })
 export class SearchPrefectureComponent implements OnInit {
   @Input() place: Place = new Place();
-  @Input() prefectures :Prefecture[] = [];
+  @Input() prefectures: Prefecture[] = [];
   @Output() selectAria: EventEmitter<Prefecture[]> = new EventEmitter<Prefecture[]>();
   ariaGroups: Aria[] = PREFECTURES;
-  
+
   constructor() {}
 
   ngOnInit() {}
 
-  seelcted(ariaName: string){
-    this.ariaGroups.forEach(group =>{
-      if(group.aria === ariaName && !!group.prefectures){
+  seelcted(ariaName: string) {
+    this.ariaGroups.forEach(group => {
+      if (group.aria === ariaName && !!group.prefectures) {
         this.prefectures = group.prefectures;
       }
     });
