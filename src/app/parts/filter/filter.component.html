@@ -8,9 +8,10 @@
         filter
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <app-select-prefectures
-      [place]="placeSearchCondition"
-    ></app-select-prefectures>
+    <app-search-prefecture
+      [prefectures]="prefectures"
+      (selectAria)="selected($event)">
+    </app-search-prefecture>
     <app-select-group
       [place]="placeSearchCondition"
     ></app-select-group>

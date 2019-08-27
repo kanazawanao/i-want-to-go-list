@@ -6,6 +6,7 @@ import {
 import { Place } from '../../models/place';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Prefecture } from 'src/app/parts/prefecture/prefecture';
 
 @Injectable({
   providedIn: 'root'
@@ -39,14 +40,14 @@ export class PlaceService {
       .pipe(map(p => p.filter(i => i.uId === userId)));
   }
 
-  searchPlaces(condition: Place): Observable<Place[]> {
+  searchPlaces(condition: Place, prefectures: Prefecture[]): Observable<Place[]> {
     return this.collection.valueChanges().pipe(
       map(p =>
         p.filter(
           i =>
-            (condition.prefecture === '' ||
+            (prefectures.length === 0 ||
               i.prefecture === '' ||
-              i.prefecture === condition.prefecture) &&
+              prefectures.find(p => i.prefecture.indexOf(p.name) !== -1)) &&
             (condition.category.length === 0 ||
               i.category.length === 0 ||
               condition.category.find(c => i.category.indexOf(c) !== -1)) &&

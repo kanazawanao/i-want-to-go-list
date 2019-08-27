@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Place } from 'src/app/models/place';
+import { Prefecture } from 'src/app/parts/prefecture/prefecture';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PlaceService } from 'src/app/services/firestore/place.service';
 import { AuthService } from 'src/app/services/firestore/auth.service';
@@ -13,6 +14,7 @@ import { Observable } from 'rxjs';
 export class PlaceComponent implements OnInit {
   processName = 'update';
   placeSearchCondition: Place = new Place();
+  prefectures: Prefecture[] = [];
   waypoints = '';
   selectedPlace?: Place;
   destinations: Place[] = [];
@@ -101,9 +103,13 @@ export class PlaceComponent implements OnInit {
     });
   }
 
+  selectAria(prefectures: Prefecture[]) {
+    this.prefectures = prefectures;
+  }
+
   search() {
     // TODO: 検索中であることを表示できたら嬉しい
-    this.places$ = this.placeService.searchPlaces(this.placeSearchCondition);
+    this.places$ = this.placeService.searchPlaces(this.placeSearchCondition, this.prefectures);
     this.selectedPlace = undefined;
     this.destinations = [];
     this.waypoints = '';
@@ -116,7 +122,8 @@ export class PlaceComponent implements OnInit {
     this.destinations = [];
     this.waypoints = '';
     const allPlaces$ = this.placeService.searchPlaces(
-      this.placeSearchCondition
+      this.placeSearchCondition,
+      this.prefectures
     );
     allPlaces$.subscribe(a => {
       this.selectedPlace = a[Math.floor(Math.random() * a.length)];

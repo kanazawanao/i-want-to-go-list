@@ -26,16 +26,17 @@ import { PlaceDetailComponent } from './pages/place/place-detail/place-detail.co
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { SelectPrefecturesComponent } from './parts/select-prefectures/select-prefectures.component';
+import { SelectPrefecturesComponent } from './parts/prefecture/select-prefectures/select-prefectures.component';
+import { SearchPrefectureComponent } from './parts/prefecture/search-prefecture/search-prefecture.component';
+import { SelectCategoryComponent } from './parts/select-category/select-category.component';
+import { SelectGroupComponent } from './parts/select-group/select-group.component';
 import { FilterComponent } from './parts/filter/filter.component';
 import { PlaceComponent } from './pages/place/place.component';
-import { SelectCategoryComponent } from './parts/select-category/select-category.component';
 import { BusinessHoursComponent } from './parts/business-hours/business-hours.component';
 import { WeatherNewsComponent } from './parts/weather-news/weather-news.component';
-import { CategoryComponent } from './pages/setting/category/category.component';
 import { UserGroupComponent } from './pages/setting/user-group/user-group.component';
-import { SelectGroupComponent } from './parts/select-group/select-group.component';
 import { UserGroupJoinComponent } from './pages/setting/user-group-join/user-group-join.component';
+import { CategoryComponent } from './pages/setting/category/category.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { UserGroupJoinComponent } from './pages/setting/user-group-join/user-gro
     UserGroupComponent,
     SelectGroupComponent,
     UserGroupJoinComponent,
+    SearchPrefectureComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

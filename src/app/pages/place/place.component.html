@@ -1,6 +1,10 @@
 <div class="form">
   <h1>list</h1>
-  <app-filter [placeSearchCondition]="placeSearchCondition"></app-filter>
+  <app-filter
+    [placeSearchCondition]="placeSearchCondition"
+    [prefectures]="prefectures"
+    (selectAria)="selectAria($event)">
+  </app-filter>
 
   <button mat-button type="button" (click)="search()">
     <mat-icon>search</mat-icon>

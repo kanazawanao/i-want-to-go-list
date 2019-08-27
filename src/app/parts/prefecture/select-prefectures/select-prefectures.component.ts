@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PREFECTURES, Aria } from './prefecture';
+import { PREFECTURES, Aria } from '../prefecture';
 import { Place } from 'src/app/models/place';
 
 @Component({

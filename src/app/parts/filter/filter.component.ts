@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Place } from 'src/app/models/place';
+import { Prefecture } from '../prefecture/prefecture';
 
 @Component({
   selector: 'app-filter',
@@ -8,9 +9,13 @@ import { Place } from 'src/app/models/place';
 })
 export class FilterComponent implements OnInit {
   @Input() placeSearchCondition: Place = new Place();
+  @Input() prefectures: Prefecture[] = [];
+  @Output() selectAria: EventEmitter<Prefecture[]> = new EventEmitter<Prefecture[]>();
   constructor() { }
 
   ngOnInit() {
   }
-
+  selected(prefectures: Prefecture[]) {
+    this.selectAria.emit(prefectures);
+  }
 }
