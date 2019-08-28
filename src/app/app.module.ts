@@ -39,6 +39,7 @@ import { UserGroupComponent } from './pages/setting/user-group/user-group.compon
 import { UserGroupJoinComponent } from './pages/setting/user-group-join/user-group-join.component';
 import { CategoryComponent } from './pages/setting/category/category.component';
 import { FileUploadComponent } from './parts/file-upload/file-upload.component';
+import { MapComponent } from './parts/map/map.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { FileUploadComponent } from './parts/file-upload/file-upload.component';
     UserGroupJoinComponent,
     SearchPrefectureComponent,
     FileUploadComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
