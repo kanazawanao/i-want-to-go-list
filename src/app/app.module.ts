@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
@@ -37,6 +38,7 @@ import { WeatherNewsComponent } from './parts/weather-news/weather-news.componen
 import { UserGroupComponent } from './pages/setting/user-group/user-group.component';
 import { UserGroupJoinComponent } from './pages/setting/user-group-join/user-group-join.component';
 import { CategoryComponent } from './pages/setting/category/category.component';
+import { FileUploadComponent } from './parts/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { CategoryComponent } from './pages/setting/category/category.component';
     SelectGroupComponent,
     UserGroupJoinComponent,
     SearchPrefectureComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -69,6 +72,7 @@ import { CategoryComponent } from './pages/setting/category/category.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     HttpClientModule,
     HttpClientJsonpModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -86,7 +90,11 @@ import { CategoryComponent } from './pages/setting/category/category.component';
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [
+    AuthService,
+    AuthGuard,
+    { provide: StorageBucket, useValue: 'sample' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
