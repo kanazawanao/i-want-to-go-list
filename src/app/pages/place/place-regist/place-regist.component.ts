@@ -29,7 +29,6 @@ export class PlaceRegistComponent implements OnInit {
     this.openSnackBar('registered');
     this.router.navigate(['placeList']);
   }
-
   openSnackBar(message: string) {
     this.snackBar.open(message, '', {
       duration: 2000

@@ -1,24 +1,43 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter
+} from '@angular/core';
+import { Place } from 'src/app/models/place';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements AfterViewInit {
+export class MapComponent implements OnInit {
+  @Input() place: Place = new Place();
+  @ViewChild('mapWrapper', { static: false }) mapElement!: ElementRef;
   map?: google.maps.Map;
-  @ViewChild('mapWrapper', {static: false}) mapElement!: ElementRef;
-
-  constructor() { }
-
-  ngAfterViewInit(): void {
-    this.initializeMap();
+  placeText = '';
+  constructor() {}
+  ngOnInit(): void {}
+  search() {
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: this.placeText }, (result, status) => {
+      this.setMap(result[0].geometry.location);
+      console.log(result);
+      this.place.place = this.placeText;
+      this.place.addr = result[0].formatted_address;
+      this.place.prefecture = result[0].address_components.filter(function(
+        component
+      ) {
+        return component.types.indexOf('administrative_area_level_1') > -1;
+      })[0].long_name;
+    });
   }
-
-  initializeMap() {
-    const lngLat = new google.maps.LatLng(6.5874964, 3.9886097);
+  setMap(latLng: google.maps.LatLng) {
     const mapOptions: google.maps.MapOptions = {
-      center: lngLat,
+      center: latLng,
       zoom: 16,
       fullscreenControl: false,
       mapTypeControl: false,
