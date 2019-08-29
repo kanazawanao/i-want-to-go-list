@@ -4,8 +4,6 @@ import {
   ViewChild,
   Input,
   OnInit,
-  Output,
-  EventEmitter
 } from '@angular/core';
 import { Place } from 'src/app/models/place';
 
@@ -19,8 +17,10 @@ export class MapComponent implements OnInit {
   @ViewChild('mapWrapper', { static: false }) mapElement!: ElementRef;
   map?: google.maps.Map;
   placeText = '';
+
   constructor() {}
-  ngOnInit(): void {}
+  ngOnInit() {}
+
   search() {
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: this.placeText }, (result, status) => {
@@ -35,6 +35,7 @@ export class MapComponent implements OnInit {
       })[0].long_name;
     });
   }
+
   setMap(latLng: google.maps.LatLng) {
     const mapOptions: google.maps.MapOptions = {
       center: latLng,

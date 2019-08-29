@@ -135,6 +135,7 @@ export class PlaceComponent implements OnInit {
     this.selectedPlace = undefined;
     this.places$ = undefined;
     this.destinations = [];
+    this.prefectures = [];
     this.waypoints = '';
     this.placeSearchCondition = new Place();
   }
