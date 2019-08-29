@@ -19,11 +19,9 @@ export class FileUploadComponent implements OnInit {
     const file = event.target.files[0];
     const filePath = '';
     const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file.name);
+    const task = this.storage.upload(filePath, file);
 
-    // observe percentage changes
     this.uploadPercent = task.percentageChanges();
-    // get notified when the download URL is available
     task.snapshotChanges().pipe(
         finalize(() => this.downloadURL = fileRef.getDownloadURL() )
      )

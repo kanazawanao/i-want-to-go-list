@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
@@ -95,7 +95,6 @@ import { MapComponent } from './parts/map/map.component';
   providers: [
     AuthService,
     AuthGuard,
-    { provide: StorageBucket, useValue: 'sample' }
   ],
   bootstrap: [AppComponent]
 })
