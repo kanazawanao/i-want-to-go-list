@@ -28,9 +28,7 @@ export class MapComponent implements OnInit {
       console.log(result);
       this.place.place = this.placeText;
       this.place.addr = result[0].formatted_address;
-      this.place.prefecture = result[0].address_components.filter(function(
-        component
-      ) {
+      this.place.prefecture = result[0].address_components.filter((component) => {
         return component.types.indexOf('administrative_area_level_1') > -1;
       })[0].long_name;
     });
