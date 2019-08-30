@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTooltipModule } from '@angular/material/tooltip';
 const modules = [
-  MatToolbarModule,
   MatButtonModule,
   MatIconModule,
-  MatMenuModule,
   MatInputModule,
+  MatCheckboxModule,
+  MatExpansionModule,
+  MatSelectModule,
   MatSnackBarModule,
-  MatTooltipModule,
 ];
 @NgModule({
   imports: [...modules],
