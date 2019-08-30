@@ -1,14 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserSigninComponent } from './pages/user-signin/user-signin.component';
-import { UserSignupComponent } from './pages/user-signup/user-signup.component';
-import { UserInfoComponent } from './pages/user-info/user-info.component';
+import { UserSigninComponent } from './pages/user/user-signin/user-signin.component';
+import { UserSignupComponent } from './pages/user/user-signup/user-signup.component';
+import { UserInfoComponent } from './pages/user/user-info/user-info.component';
 import { AuthGuard } from './guard/auth.guard';
-import { PlaceRegistComponent } from './pages/place/place-regist/place-regist.component';
-import { PlaceComponent } from './pages/place/place.component';
-import { CategoryComponent } from './pages/setting/category/category.component';
-import { UserGroupComponent } from './pages/setting/user-group/user-group.component';
-import { UserGroupJoinComponent } from './pages/setting/user-group-join/user-group-join.component';
 
 const routes: Routes = [
   {
@@ -22,38 +17,23 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'placeRegist',
-    component: PlaceRegistComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'placeList',
-    component: PlaceComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'category',
-    component: CategoryComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'userGroup',
-    component: UserGroupComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'userGroupJoin',
-    component: UserGroupJoinComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'signIn',
     component: UserSigninComponent
   },
   {
     path: 'signUp',
     component: UserSignupComponent
-  }
+  },
+  {
+    path: 'place',
+    loadChildren: () => import('./pages/place/place.module').then(m => m.PlaceModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'setting',
+    loadChildren: () => import('./pages/setting/setting.module').then(m => m.SettingModule),
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

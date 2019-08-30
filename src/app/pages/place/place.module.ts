@@ -1,0 +1,40 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { PlaceRoutingModule } from './place-routing.module';
+import { PlaceComponent } from './place-view/place.component';
+import { PlaceDetailComponent } from './place-detail/place-detail.component';
+import { PlaceListComponent } from './place-list/place-list.component';
+import { PlaceRegistComponent } from './place-regist/place-regist.component';
+import { SelectPrefecturesComponent } from 'src/app/parts/prefecture/select-prefectures/select-prefectures.component';
+import { SearchPrefectureComponent } from 'src/app/parts/prefecture/search-prefecture/search-prefecture.component';
+import { SelectCategoryComponent } from 'src/app/parts/select-category/select-category.component';
+import { SelectGroupComponent } from 'src/app/parts/select-group/select-group.component';
+import { FilterComponent } from 'src/app/parts/filter/filter.component';;
+import { BusinessHoursComponent } from 'src/app/parts/business-hours/business-hours.component';
+import { MapComponent } from 'src/app/parts/map/map.component';
+import { MaterialModule } from './material/material.module';
+
+@NgModule({
+  declarations: [
+    PlaceComponent,
+    PlaceDetailComponent,
+    PlaceListComponent,
+    PlaceRegistComponent,
+    SelectPrefecturesComponent,
+    FilterComponent,
+    SelectCategoryComponent,
+    BusinessHoursComponent,
+    SelectGroupComponent,
+    SearchPrefectureComponent,
+    MapComponent,
+  ],
+  imports: [
+    CommonModule,
+    PlaceRoutingModule,
+    FormsModule,
+    MaterialModule
+  ]
+})
+export class PlaceModule { }
