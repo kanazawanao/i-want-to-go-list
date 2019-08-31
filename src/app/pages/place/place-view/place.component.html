@@ -3,7 +3,8 @@
   <app-filter
     [placeSearchCondition]="placeSearchCondition"
     [prefectures]="prefectures"
-    (selectAria)="selectAria($event)">
+    (selectAria)="selectAria($event)"
+  >
   </app-filter>
 
   <button mat-button type="button" (click)="search()">
@@ -34,7 +35,13 @@
       (processing)="update($event)"
     ></app-place-detail>
   </div>
-  <a matSuffix [href]="googleMapLinks">
-    <mat-icon>location_on</mat-icon>
-  </a>
+  <button mat-button type="button" (click)="createRoot()">
+    <mat-icon>map</mat-icon>
+    root
+  </button>
+  <div *ngIf="canCreateRoot">
+    <app-place-destinations
+      [destinations]="destinations"
+    ></app-place-destinations>
+  </div>
 </div>

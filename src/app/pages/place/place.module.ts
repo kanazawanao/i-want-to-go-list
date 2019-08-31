@@ -15,6 +15,7 @@ import { FilterComponent } from 'src/app/parts/filter/filter.component';;
 import { BusinessHoursComponent } from 'src/app/parts/business-hours/business-hours.component';
 import { MapComponent } from 'src/app/parts/map/map.component';
 import { MaterialModule } from './material/material.module';
+import { PlaceDestinationsComponent } from './place-destinations/place-destinations.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MaterialModule } from './material/material.module';
     SelectGroupComponent,
     SearchPrefectureComponent,
     MapComponent,
+    PlaceDestinationsComponent,
   ],
   imports: [
     CommonModule,

@@ -15,17 +15,10 @@ export class PlaceComponent implements OnInit {
   processName = 'update';
   placeSearchCondition: Place = new Place();
   prefectures: Prefecture[] = [];
-  waypoints = '';
   selectedPlace?: Place;
   destinations: Place[] = [];
   places$?: Observable<Place[]>;
-  get googleMapLinks(): string {
-    return this.destinations.length !== 0
-      ? 'https://www.google.com/maps/dir/?api=1' +
-          this.waypoints +
-          '&travelmode=driving'
-      : '';
-  }
+  canCreateRoot = false;
   constructor(
     private placeService: PlaceService,
     private auth: AuthService,
@@ -50,7 +43,6 @@ export class PlaceComponent implements OnInit {
     });
     this.openSnackBar('deleted');
     this.selectedPlace = undefined;
-    this.createWayoption();
   }
 
   update(place: Place) {
@@ -66,7 +58,6 @@ export class PlaceComponent implements OnInit {
         this.destinations[index] = place;
       }
     });
-    this.createWayoption();
   }
 
   addDestination(place: Place) {
@@ -80,21 +71,6 @@ export class PlaceComponent implements OnInit {
     if (!deleted) {
       this.destinations.push(place);
     }
-    this.createWayoption();
-  }
-
-  createWayoption() {
-    const des: string[] = [];
-    let lastPlace: Place = new Place();
-    this.destinations.forEach((d, index) => {
-      if (index === 0) {
-        lastPlace = d;
-      } else {
-        des.push(d.addr);
-      }
-    });
-    this.waypoints =
-      '&destination=' + lastPlace.addr + '&waypoints=' + des.join(' | ');
   }
 
   openSnackBar(message: string) {
@@ -109,10 +85,12 @@ export class PlaceComponent implements OnInit {
 
   search() {
     // TODO: 検索中であることを表示できたら嬉しい
-    this.places$ = this.placeService.searchPlaces(this.placeSearchCondition, this.prefectures);
+    this.places$ = this.placeService.searchPlaces(
+      this.placeSearchCondition,
+      this.prefectures
+    );
     this.selectedPlace = undefined;
     this.destinations = [];
-    this.waypoints = '';
     this.openSnackBar('searched');
     // TODO: 検索結果が０件の場合の処理実装したい
   }
@@ -120,7 +98,6 @@ export class PlaceComponent implements OnInit {
   random() {
     this.places$ = undefined;
     this.destinations = [];
-    this.waypoints = '';
     const allPlaces$ = this.placeService.searchPlaces(
       this.placeSearchCondition,
       this.prefectures
@@ -136,7 +113,11 @@ export class PlaceComponent implements OnInit {
     this.places$ = undefined;
     this.destinations = [];
     this.prefectures = [];
-    this.waypoints = '';
     this.placeSearchCondition = new Place();
+    this.canCreateRoot = false;
+  }
+
+  createRoot() {
+    this.canCreateRoot = true;
   }
 }
