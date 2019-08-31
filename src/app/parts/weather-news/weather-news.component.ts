@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Weather } from 'src/app/models/weather';
 import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
@@ -10,10 +9,12 @@ import { WeatherService } from 'src/app/services/weather.service';
 })
 export class WeatherNewsComponent implements OnInit {
   tokyo$?: Observable<any>;
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService) {}
 
   ngOnInit() {
-    this.tokyo$ = this.weatherService.getWeatherByCityId();
+    this.tokyo$ = this.weatherService.getWeatherByLatLng(37.8267, -122.4233);
   }
-
+  getWeatherByLatLng(lat: number, lng: number) {
+    this.tokyo$ = this.weatherService.getWeatherByLatLng(lat, lng);
+  }
 }

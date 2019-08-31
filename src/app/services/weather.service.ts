@@ -16,8 +16,10 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {}
 
-  getWeatherByCityId(): Observable<any> {
-    return this.http.get(this.weatherApiUrl, this.httpOptions).pipe(
+  getWeatherByLatLng(lat: number, lng: number): Observable<any> {
+    const targetUrl = this.weatherApiUrl + `?lat=${lat}&lng=${lng}`;
+    console.log(targetUrl);
+    return this.http.get(targetUrl, this.httpOptions).pipe(
       tap(weather => console.log(weather)),
       catchError(this.handleError<any>('getWeatherByCityId'))
     );
@@ -29,7 +31,6 @@ export class WeatherService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: リモート上のロギング基盤にエラーを送信する
       console.error(error); // かわりにconsoleに出力
       console.log(operation);
