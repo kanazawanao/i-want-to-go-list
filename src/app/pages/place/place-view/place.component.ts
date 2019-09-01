@@ -114,6 +114,7 @@ export class PlaceComponent implements OnInit {
     this.destinations = [];
     this.prefectures = [];
     this.placeSearchCondition = new Place();
+    this.placeSearchCondition.uId = this.auth.userId;
     this.canCreateRoot = false;
   }
 
