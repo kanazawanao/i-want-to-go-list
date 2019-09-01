@@ -9,9 +9,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './state';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +33,7 @@ import { FileUploadComponent } from './parts/file-upload/file-upload.component';
     UserSignupComponent,
     UserInfoComponent,
     WeatherNewsComponent,
-    FileUploadComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -54,20 +51,9 @@ import { FileUploadComponent } from './parts/file-upload/file-upload.component';
     }),
     RouterModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    StoreModule.forRoot(reducers, {
-      metaReducers,
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true
-      }
-    }),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    MaterialModule
   ],
-  providers: [
-    AuthService,
-    AuthGuard,
-  ],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
