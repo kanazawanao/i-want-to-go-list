@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from 'src/app/pages/place/material/material.module';
 
 import { SearchPrefectureComponent } from './search-prefecture.component';
 
@@ -8,7 +9,12 @@ describe('SearchPrefectureComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchPrefectureComponent ]
+      declarations: [
+        SearchPrefectureComponent,
+      ],
+      imports: [
+        MaterialModule,
+      ]
     })
     .compileComponents();
   }));

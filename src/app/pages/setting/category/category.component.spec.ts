@@ -1,14 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '../material/material.module';
 
 import { CategoryComponent } from './category.component';
 
-describe('SettingComponent', () => {
+describe('CategoryComponent', () => {
   let component: CategoryComponent;
   let fixture: ComponentFixture<CategoryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CategoryComponent ]
+      declarations: [ CategoryComponent ],
+      imports:[
+        MaterialModule,
+      ]
     })
     .compileComponents();
   }));
