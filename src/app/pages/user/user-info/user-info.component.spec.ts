@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from "@angular/router/testing";
 
 import { UserInfoComponent } from './user-info.component';
+import { MaterialModule } from 'src/app/material/material.module';
 
 describe('UserInfoComponent', () => {
   let component: UserInfoComponent;
@@ -8,7 +12,17 @@ describe('UserInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UserInfoComponent]
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
+      declarations: [
+        UserInfoComponent
+      ],
+      imports: [
+        RouterTestingModule,
+        FormsModule,
+        MaterialModule
+      ]
     }).compileComponents();
   }));
 

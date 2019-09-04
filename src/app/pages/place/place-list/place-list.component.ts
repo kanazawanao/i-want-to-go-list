@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Place } from 'src/app/models/place';
 import { Observable } from 'rxjs';
-import { ConcatSource } from 'webpack-sources';
 
 @Component({
   selector: 'app-place-list',

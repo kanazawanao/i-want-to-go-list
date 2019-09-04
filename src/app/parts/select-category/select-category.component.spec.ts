@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectCategoryComponent } from './select-category.component';
+import { MaterialModule } from 'src/app/material/material.module';
 
 describe('SelectCategoryComponent', () => {
   let component: SelectCategoryComponent;
@@ -8,7 +9,12 @@ describe('SelectCategoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectCategoryComponent ]
+      declarations: [
+        SelectCategoryComponent
+      ],
+      imports: [
+        MaterialModule
+      ]
     })
     .compileComponents();
   }));

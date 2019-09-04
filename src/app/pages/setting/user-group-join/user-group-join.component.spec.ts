@@ -1,7 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { UserGroupJoinComponent } from './user-group-join.component';
+import { MaterialModule } from '../material/material.module';
 
 describe('UserGroupJoinComponent', () => {
   let component: UserGroupJoinComponent;
@@ -9,11 +11,15 @@ describe('UserGroupJoinComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
       declarations: [
         UserGroupJoinComponent,
       ],
       imports:[
         FormsModule,
+        MaterialModule
       ]
     })
     .compileComponents();

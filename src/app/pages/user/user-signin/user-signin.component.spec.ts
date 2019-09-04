@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from "@angular/router/testing";
 
 import { UserSigninComponent } from './user-signin.component';
+import { MaterialModule } from 'src/app/material/material.module';
 
 describe('UserSigninComponent', () => {
   let component: UserSigninComponent;
@@ -8,7 +12,17 @@ describe('UserSigninComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserSigninComponent ]
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
+      declarations: [
+        UserSigninComponent
+      ],
+      imports: [
+        RouterTestingModule,
+        FormsModule,
+        MaterialModule
+      ]
     })
     .compileComponents();
   }));

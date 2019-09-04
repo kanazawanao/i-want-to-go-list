@@ -1,6 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { RouterTestingModule } from "@angular/router/testing";
 
 import { PlaceComponent } from './place.component';
+import { MaterialModule } from '../material/material.module';
+import { environment } from 'src/environments/environment';
 
 describe('PlaceComponent', () => {
   let component: PlaceComponent;
@@ -8,7 +15,19 @@ describe('PlaceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlaceComponent ]
+      schemas:[
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
+      declarations: [
+        PlaceComponent
+      ],
+      imports: [
+        MaterialModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        AngularFirestoreModule,
+        RouterTestingModule
+      ]
     })
     .compileComponents();
   }));

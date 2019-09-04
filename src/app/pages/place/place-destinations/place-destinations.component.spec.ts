@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { PlaceDestinationsComponent } from './place-destinations.component';
+import { MaterialModule } from '../material/material.module';
 
 describe('PlaceDestinationsComponent', () => {
   let component: PlaceDestinationsComponent;
@@ -8,7 +10,15 @@ describe('PlaceDestinationsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlaceDestinationsComponent ]
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
+      declarations: [
+        PlaceDestinationsComponent
+      ],
+      imports: [
+        MaterialModule
+      ]
     })
     .compileComponents();
   }));
