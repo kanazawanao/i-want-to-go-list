@@ -1,12 +1,19 @@
 import { TestBed } from '@angular/core/testing';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { RouterTestingModule } from "@angular/router/testing";
 
 import { UserGroupService } from './user-group.service';
+import { environment } from 'src/environments/environment';
 
 describe('UserGroupService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports:[
-      RouterTestingModule
+      RouterTestingModule,
+      AngularFireModule.initializeApp(environment.firebase),
+      AngularFireAuthModule,
+      AngularFirestoreModule,
     ]
   }));
 

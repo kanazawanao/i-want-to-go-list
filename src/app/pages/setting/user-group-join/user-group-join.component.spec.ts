@@ -1,9 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { RouterTestingModule } from "@angular/router/testing";
 
 import { UserGroupJoinComponent } from './user-group-join.component';
 import { MaterialModule } from '../material/material.module';
+import { environment } from 'src/environments/environment';
 
 describe('UserGroupJoinComponent', () => {
   let component: UserGroupJoinComponent;
@@ -19,6 +24,10 @@ describe('UserGroupJoinComponent', () => {
       ],
       imports:[
         FormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        AngularFirestoreModule,
+        RouterTestingModule,
         MaterialModule
       ]
     })

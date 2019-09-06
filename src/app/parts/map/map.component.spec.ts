@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MaterialModule } from 'src/app/pages/place/material/material.module';
 import { MapComponent } from './map.component';
 
 describe('MapComponent', () => {
@@ -13,7 +15,9 @@ describe('MapComponent', () => {
         MapComponent
       ],
       imports: [
-        FormsModule
+        FormsModule,
+        BrowserAnimationsModule,
+        MaterialModule,
       ]
     })
     .compileComponents();

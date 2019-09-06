@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FilterComponent } from './filter.component';
 import { MaterialModule } from 'src/app/pages/place/material/material.module';
@@ -9,11 +11,15 @@ describe('FilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
       declarations: [
         FilterComponent
       ],
       imports: [
-        MaterialModule
+        BrowserAnimationsModule,
+        MaterialModule,
       ]
     })
     .compileComponents();

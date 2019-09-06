@@ -1,12 +1,19 @@
 import { TestBed } from '@angular/core/testing';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { RouterTestingModule } from "@angular/router/testing";
 
 import { CategoryService } from './category.service';
+import { environment } from 'src/environments/environment';
 
 describe('CategoryService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [
-      AngularFireAuth
+      AngularFireModule.initializeApp(environment.firebase),
+      AngularFireAuthModule,
+      AngularFirestoreModule,
+      RouterTestingModule,
     ]
   }));
 

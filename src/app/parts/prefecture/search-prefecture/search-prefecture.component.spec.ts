@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MaterialModule } from 'src/app/pages/place/material/material.module';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MaterialModule } from 'src/app/pages/place/material/material.module';
 import { SearchPrefectureComponent } from './search-prefecture.component';
 
 describe('SearchPrefectureComponent', () => {
@@ -9,10 +11,14 @@ describe('SearchPrefectureComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
       declarations: [
         SearchPrefectureComponent,
       ],
       imports: [
+        BrowserAnimationsModule,
         MaterialModule,
       ]
     })
