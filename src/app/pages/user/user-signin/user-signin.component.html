@@ -27,11 +27,16 @@
     type="button"
     (click)="signIn()"
     [disabled]="signinForm.invalid"
+    aria-label="signIn"
   >
     <mat-icon>exit_to_app</mat-icon>
     sign in
   </button>
-  <button mat-button type="button" (click)="googleSignIn()">
+  <button
+    mat-button
+    type="button"
+    (click)="googleSignIn()"
+    aria-label="googleSignIn">
     <mat-icon>exit_to_app</mat-icon>
     Google sign in
   </button>

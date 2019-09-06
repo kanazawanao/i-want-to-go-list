@@ -7,7 +7,12 @@
     [cdkDragStartDelay]="200"
   >
     {{ categoryName }}
-    <button matSuffix mat-icon-button type="button" (click)="delete(i)">
+    <button
+      matSuffix
+      mat-icon-button
+      type="button"
+      (click)="delete(i)"
+      aria-label="deleteCategory">
       <mat-icon>delete</mat-icon>
     </button>
   </div>
@@ -30,6 +35,7 @@
     type="button"
     (click)="regist()"
     [disabled]="categoryForm.invalid"
+    aria-label="registCategory"
   >
     <mat-icon>done</mat-icon>
     regist

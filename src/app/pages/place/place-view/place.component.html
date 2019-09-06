@@ -7,15 +7,27 @@
   >
   </app-filter>
 
-  <button mat-button type="button" (click)="search()">
+  <button
+    mat-button
+    type="button"
+    (click)="search()"
+    aria-label="searchPlaces">
     <mat-icon>search</mat-icon>
     search
   </button>
-  <button mat-button type="button" (click)="random()">
+  <button
+    mat-button
+    type="button"
+    (click)="random()"
+    aria-label="randomPlace">
     <mat-icon>find_replace</mat-icon>
     random
   </button>
-  <button mat-button type="button" (click)="clear()">
+  <button
+    mat-button
+    type="button"
+    (click)="clear()"
+    aria-label="clear">
     <mat-icon>clear_all</mat-icon>
     clear
   </button>
@@ -35,7 +47,11 @@
       (processing)="update($event)"
     ></app-place-detail>
   </div>
-  <button mat-button type="button" (click)="createRoot()">
+  <button
+    mat-button
+    type="button"
+    (click)="createRoot()"
+    aria-label="createRoot">
     <mat-icon>map</mat-icon>
     root
   </button>

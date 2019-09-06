@@ -14,12 +14,18 @@
           mat-icon-button
           type="button"
           matTooltip="Copy"
-          (click)="copyToClipboard(userGroup.id)">
+          (click)="copyToClipboard(userGroup.id)"
+          aria-label="copyToClipboard">
           <mat-icon>content_copy</mat-icon>
         </button>
       </mat-card-content>
       <mat-card-actions>
-        <button matSuffix mat-icon-button type="button" (click)="delete(i)">
+        <button
+          matSuffix
+          mat-icon-button
+          type="button"
+          (click)="delete(i)"
+          aria-label="deleteGropup">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-card-actions>
@@ -43,6 +49,7 @@
     type="button"
     (click)="regist()"
     [disabled]="userGroupForm.invalid"
+    aria-label="registGropup"
   >
     <mat-icon>add</mat-icon>
     regist

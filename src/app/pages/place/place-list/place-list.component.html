@@ -1,7 +1,11 @@
 <mat-accordion class="full-width headers-align">
   <mat-expansion-panel *ngFor="let place of places$ | async">
     <mat-expansion-panel-header>
-      <button mat-icon-button type="button" (click)="delete($event, place)">
+      <button
+        mat-icon-button
+        type="button"
+        (click)="delete($event, place)"
+        aria-label="deletePlace">
         <mat-icon>delete</mat-icon>
       </button>
       <mat-panel-title>

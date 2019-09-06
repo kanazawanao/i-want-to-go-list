@@ -3,7 +3,13 @@
   <mat-label>prefecture</mat-label>
   <mat-select [(ngModel)]="prefectures" name="prefectures" multiple>
     <mat-optgroup *ngFor="let group of ariaGroups">
-      <button mat-raised-button color="primary" (click)="seelcted(group.aria)">{{group.aria}}</button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="seelcted(group.aria)"
+        aria-label="seelcted">
+        {{group.aria}}
+      </button>
       <mat-option
         *ngFor="let prefecture of group.prefectures"
         [value]="prefecture"
