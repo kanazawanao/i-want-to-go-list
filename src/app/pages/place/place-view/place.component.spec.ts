@@ -3,7 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { PlaceComponent } from './place.component';
 import { MaterialModule } from '../material/material.module';
@@ -15,7 +15,7 @@ describe('PlaceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      schemas:[
+      schemas: [
         CUSTOM_ELEMENTS_SCHEMA
       ],
       declarations: [

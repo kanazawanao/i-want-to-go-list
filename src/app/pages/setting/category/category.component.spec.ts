@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { MaterialModule } from '../material/material.module';
 import { CategoryComponent } from './category.component';
@@ -22,7 +22,7 @@ describe('CategoryComponent', () => {
       declarations: [
         CategoryComponent
       ],
-      imports:[
+      imports: [
         FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,

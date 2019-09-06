@@ -16,8 +16,8 @@ export class CategoryService {
     private auth: AuthService
   ) {
     this.userId = this.auth.userId;
-    this.document = this.afStore.doc<Category>(`categories/${this.userId}`);
     this.collection = this.afStore.collection<Category>('categories');
+    this.document = this.collection.doc<Category>(`${this.userId}`);
   }
 
   addCategories(categories: Category): void {

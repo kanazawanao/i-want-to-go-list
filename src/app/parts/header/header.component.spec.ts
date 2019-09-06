@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { HeaderComponent } from './header.component';
 import { MaterialModule } from 'src/app/material/material.module';
@@ -17,7 +17,7 @@ describe('HeaderComponent', () => {
       declarations: [
         HeaderComponent
       ],
-      imports:[
+      imports: [
         RouterTestingModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,

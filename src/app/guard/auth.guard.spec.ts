@@ -1,5 +1,5 @@
-import { TestBed, async, inject } from '@angular/core/testing';
-import { RouterTestingModule } from "@angular/router/testing";
+import { TestBed, inject } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';

@@ -4,7 +4,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { UserGroupJoinComponent } from './user-group-join.component';
 import { MaterialModule } from '../material/material.module';
@@ -22,7 +22,7 @@ describe('UserGroupJoinComponent', () => {
       declarations: [
         UserGroupJoinComponent,
       ],
-      imports:[
+      imports: [
         FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,
