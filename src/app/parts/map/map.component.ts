@@ -16,6 +16,7 @@ export class MapComponent implements OnInit {
   @Input() place: Place = new Place();
   @ViewChild('mapWrapper', { static: false }) mapElement!: ElementRef;
   map?: google.maps.Map;
+  marker?: google.maps.Marker;
   placeText = '';
 
   constructor() {}
@@ -43,5 +44,9 @@ export class MapComponent implements OnInit {
       streetViewControl: false
     };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    this.marker = new google.maps.Marker({
+      position: latLng,
+      map: this.map
+    });
   }
 }
