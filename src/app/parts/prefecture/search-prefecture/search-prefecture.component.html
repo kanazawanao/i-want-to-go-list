@@ -1,12 +1,16 @@
 <mat-form-field class="full-width">
   <mat-icon matPrefix>public</mat-icon>
   <mat-label>prefecture</mat-label>
-  <mat-select [(ngModel)]="prefectures" name="prefectures" multiple>
+  <mat-select
+    [(ngModel)]="prefectures"
+    name="prefectures"
+    (selectionChange)="seelctedPrefecture()"
+    multiple>
     <mat-optgroup *ngFor="let group of ariaGroups">
       <button
         mat-raised-button
         color="primary"
-        (click)="seelcted(group.aria)"
+        (click)="seelctedAria(group.aria)"
         aria-label="seelcted">
         {{group.aria}}
       </button>

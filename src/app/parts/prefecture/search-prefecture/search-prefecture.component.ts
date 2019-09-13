@@ -17,12 +17,16 @@ export class SearchPrefectureComponent implements OnInit {
 
   ngOnInit() {}
 
-  seelcted(ariaName: string) {
+  seelctedAria(ariaName: string) {
     this.ariaGroups.forEach(group => {
       if (group.aria === ariaName && !!group.prefectures) {
         this.prefectures = group.prefectures;
       }
     });
+    this.selectAria.emit(this.prefectures);
+  }
+
+  seelctedPrefecture() {
     this.selectAria.emit(this.prefectures);
   }
 }
